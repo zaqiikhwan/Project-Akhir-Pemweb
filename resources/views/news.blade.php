@@ -7,10 +7,28 @@
     <title>Document</title>
 </head>
 <body>
+    {{-- alert: {{ $data }} --}}
     {{-- <Link href=""></Link> --}}
-    id: {{ $id }}
+    {{-- id: {{ $id }}
     title: {{ $title }}
     content: {{ $content }}
-    date: {{ $date }}
+    <img src="{{ $image }}" alt="" srcset="">
+    date: {{ $date }} --}}
+    {{ $news[0] }}
+    <br>
+    {{ $news[1] }}
+    <br>
+    {{ $news[2] }}
+    <br>
+    {{ $news[3] }}
+    <br>
+    {{-- {{ $news[0] }} --}}
+    <br>
+    total berita: {{ $total }}
+    @foreach ($news as $item)
+        {{ $item->id }}
+        <br>
+        {{-- <h1>{{ $item }}</h1> --}}
+    @endforeach
 </body>
 </html>

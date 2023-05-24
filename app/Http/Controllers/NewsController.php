@@ -12,7 +12,7 @@ class NewsController extends Controller
 
     public function create()
     {
-        $news = News::create([
+        News::create([
             'id' => 'test',
             'title' => 'My first news',
             'content' => 'This is my first news',
@@ -23,18 +23,22 @@ class NewsController extends Controller
         // $news->id;
 
         return view('news', [
-            'id' => "test",
-            'title' => "ini judul pertama",
-            'content' => "ini content pertama",
-            'date' => "2023-05-24",
+            'data' => "berita berhasil ditambahkan",
         ]);
     }
 
     public function read()
     {
-        $news = News::all();
+        $news = News::paginate(2);
+        $total = News::count();
 
-        return $news;
+
+        return view('news', [
+            'news' => $news,
+            'total' => $total,
+        ]);
+
+        // return $news;
     }
 
 

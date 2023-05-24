@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NewsController;
+use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/news', [NewsController::class, 'create'] );
+Route::get('/news', [NewsController::class, 'read']);
+Route::get('/create-news', [NewsController::class, 'create']);
 
 
