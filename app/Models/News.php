@@ -12,6 +12,7 @@ class News extends Model
     use HasUlids;
 
     protected $fillable = [
+        'ulid', // This is the ulid field
         'title',
         'content',
         'image',
