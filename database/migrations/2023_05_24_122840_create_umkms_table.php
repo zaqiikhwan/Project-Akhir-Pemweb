@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('umkms', function (Blueprint $table) {
-            $table->ulid()->primary();
+            $table->ulid('id')->primary();
             $table->string('product_name', 255)->nullable(false);
             $table->string('image')->nullable(false);
             $table->text('description')->nullable(false);

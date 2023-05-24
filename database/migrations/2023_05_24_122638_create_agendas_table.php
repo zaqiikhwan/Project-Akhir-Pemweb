@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('agendas', function (Blueprint $table) {
-            $table->ulid()->primary();
+            $table->ulid('id')->primary();
             $table->string('title', 255)->nullable(false);
             $table->string('image')->nullable(false);
             $table->softDeletes();
