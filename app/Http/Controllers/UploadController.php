@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class UploadController extends Controller
 {
@@ -56,6 +56,7 @@ class UploadController extends Controller
         // php artisan storage:link
         // jika folder belum ada maka akan dicreate
 		$tujuan_upload = 'data_file';
+
         $nama_file = time()."_".$file->getClientOriginalName();
         // upload file
 		$file->move($tujuan_upload, $nama_file);
@@ -69,4 +70,53 @@ class UploadController extends Controller
 
         return redirect()->back();
 	}
+
+    public function delete($id) {
+        $news = News::find($id);
+
+        // $file->delete();
+        // File::delete()
+        File::delete('data_file/'.$news->image);
+        $news->delete();
+        return redirect()->back();
+    }
+
+    public function editNews($id){
+        $news = News::find($id);
+        return view('edit', ['news' => $news]);
+    }
+
+    public function edit(Request $request){
+
+        $file = $request->file('file');
+        // $title = $request->input('title');
+        // $content = $request->input('content');
+        $news = News::find($request->id);
+        if ($file == null) {
+            // echo();
+            // printf($request->id);
+            News::where('id', $request->id)->update([
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+            ]);
+            // return view('edit', ['news' => $news]);
+        } else {
+            File::delete('data_file/'.$news->image);
+            $tujuan_upload = 'data_file';
+            $nama_file = time()."_".$file->getClientOriginalName();
+            // upload file
+            $file->move($tujuan_upload, $nama_file);
+
+            News::where('id', $request->id)->update([
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+                'image' => $nama_file,
+                // 'date' => time(),
+            ]);
+        }
+        // $news = News::find($id);
+        // return view('edit', ['news' => $news]);
+
+        return redirect()->route('upload');
+    }
 }
