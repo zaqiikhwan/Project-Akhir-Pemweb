@@ -2,65 +2,38 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-use Auth;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Session;
 
 class LoginController extends Controller
 {
-
-    // use AuthenticateUsers;
-
-    protected $guard = 'adminMiddle';
-    protected $redirectTo = 'admin/home';
-
-    public function __construct(){
-        $this->middleware('guest')->except('logout');
-    }
-
-    public function guard(){
-        return auth()->guard('adminMiddle');
-    }
-
-    public function loginForm(){
-        if(auth()->guard('adminMiddle')->user()){
-            return back();
-        }
-        return view('login');
-    }
-
-    public function login(Request $request){
-        $this->validate($request,[
-            'email' => 'required|email:dns',
-            'password' => 'required',
-        ]);
-
-        if(auth()->guard('adminMiddle')->attempt(['email' => $request->email, 'password' => $request->password])){
-            $admin = auth()->guard('adminMiddle')->user();
-            Session::put('success', 'Anda berhasil login!');
-            return redirect()->route('admin.home');
-        } else {
-            return back()->with('error', 'email atau password salah!');
+    public function login(){
+        if(Auth::check()){
+            return redirect('home');
+        }else{
+            return view('login');
         }
     }
 
-    // public function index(){
-    //     return view('login', [
-    //         'title' => 'Login',
-    //         'active' => 'login'
-    //     ]);
-    // }
+    public function actionlogin(Request $request){
+        $data = [
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ];
+        
+        if(Auth::attempt($data)){
+            return redirect('home');
+        }else{
+            Session::flash('error', 'Email atau Password Salah');
+            return redirect('/');
+        }
+    }
 
-    // public function authenticate(Request $request){
-    //     $request->validate([
-    //         'email' => 'required|email:dns',
-    //         'password' => 'required'
-    //     ]);
-
-    //     dd('berhasil login');
-    // }
-    //
+    public function actionlogout(){
+        Auth::logout();
+        return redirect('/');
+    }
 }

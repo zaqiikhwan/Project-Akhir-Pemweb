@@ -33,15 +33,12 @@ Route::get('/upload/hapus/{id}', [UploadController::class, 'delete']);
 Route::get('/upload/edit/{id}', [UploadController::class, 'editNews']);
 Route::patch('/upload/update', [UploadController::class, 'edit']);
 
+Route::get('/admin', [LoginController::class, 'login'])->name('login');
+Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
-Route::prefix('admin')->group(function(){
-    Route::get('/',[LoginController::class, 'loginForm']);
-    Route::get('/login',[LoginController::class, 'loginForm'])->name('admin.login');
-    Route::post('/login',[LoginController::class, 'login'])->name('admin.login');
-    // Route::get('/login', [LoginController::class, 'index']);
-    // Route::post('/login', [LoginController::class, 'authenticate']);
-    Route::get('/home',[HomeController::class, 'index'])->name('admin.home');
-});
+Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+
 
 
 
