@@ -3,6 +3,7 @@
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,10 @@ Route::post('/upload/proses', [UploadController::class, 'proses_upload']);
 Route::prefix('admin')->group(function(){
     Route::get('/',[LoginController::class, 'loginForm']);
     Route::get('/login',[LoginController::class, 'loginForm'])->name('admin.login');
+    Route::post('/login',[LoginController::class, 'login'])->name('admin.login');
+    // Route::get('/login', [LoginController::class, 'index']);
+    // Route::post('/login', [LoginController::class, 'authenticate']);
+    Route::get('/home',[HomeController::class, 'index'])->name('admin.home');
 });
 
 
