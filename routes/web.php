@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,11 @@ Route::get('/news', [NewsController::class, 'read']);
 
 Route::get('/upload', [UploadController::class, 'upload']);
 Route::post('/upload/proses', [UploadController::class, 'proses_upload']);
+
+Route::prefix('admin')->group(function(){
+    Route::get('/',[LoginController::class, 'loginForm']);
+    Route::get('/login',[LoginController::class, 'loginForm'])->name('admin.login');
+});
 
 
 
