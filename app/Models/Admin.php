@@ -5,16 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illmuninate\Notifications\Notifiable;
 
-class Admins extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Admin extends Authenticatable
 {
-    use HasFactory;
-    use HasUlids;
+    use HasFactory, HasUlids, Notifiable;
 
     protected $fillable = [
-        'id', // This is the ulid field
+        'ulid',
         'username',
         'email',
         'password'
     ];
+
+    protected $table = 'admins';
 }
