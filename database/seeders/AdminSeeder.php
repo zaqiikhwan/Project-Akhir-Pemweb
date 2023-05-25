@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Symfony\Component\Uid\Ulid;
 
 class AdminSeeder extends Seeder
 {
@@ -15,8 +15,9 @@ class AdminSeeder extends Seeder
     {
         //
         DB::table('admins')->insert([
-            'username' => 'admin',
-            'email' => 'admin@gmail.com',
+            'id' => strtolower(Ulid::generate()),
+            'username' => 'admin1',
+            'email' => 'admin1@gmail.com',
             'password' => bcrypt('admin123')
         ]);
     }
