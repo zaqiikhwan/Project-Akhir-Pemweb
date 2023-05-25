@@ -6,7 +6,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -23,7 +23,7 @@ class LoginController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password'),
         ];
-        
+
         if(Auth::attempt($data)){
             return redirect('home');
         }else{
