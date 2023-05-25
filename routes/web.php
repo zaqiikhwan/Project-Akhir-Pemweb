@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UploadController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,12 @@ Route::get('/', function () {
 });
 
 Route::get('/news', [NewsController::class, 'read']);
-Route::get('/create-news', [NewsController::class, 'create']);
+// Route::post('/create-news', [NewsController::class, 'createNews']);
+
+// Route::view('/test', 'create');
+
+Route::get('/upload', [UploadController::class, 'upload']);
+Route::post('/upload/proses', [UploadController::class, 'proses_upload']);
+
 
 

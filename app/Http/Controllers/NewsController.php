@@ -5,10 +5,42 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
     //
+
+    public function createNews(array $request) {
+        // Validator::make($request, [
+        //     'title' => ['string', 'max:255'],
+        //     'content' => ['string'],
+        //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        // ]);
+
+        if ($request['foto'] != null) {
+            $filenameWithExt = $request['foto']->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request['foto']->getClientOriginalExtension();
+            $filenameSimpan = $filename.'_'.time().'.'.$extension;
+            $path = $request['foto']->storeAs('public/foto', $filenameSimpan);
+        } else {
+            $filenameSimpan = 'noimage.jpg';
+        }
+
+        return News::create([
+            // 'title' => $request['title'],
+            // 'content' => $request['content'],
+            'image' => $path,
+            'date' => time().now(),
+        ]);
+        // $news = new News;
+        // $news->date = time().now();
+        // $news->title = $request['title'];
+        // $news->content = $request['content'];
+        // $news->image = $path;
+        // $news->save();
+    }
 
     public function create()
     {
@@ -29,6 +61,7 @@ class NewsController extends Controller
 
     public function read()
     {
+        // paginate news, ketika lanjut ?news=2 maka akan menampilkan halaman 2
         $news = News::paginate(2);
         $total = News::count();
 
@@ -40,6 +73,7 @@ class NewsController extends Controller
 
         // return $news;
     }
+
 
 
 }
