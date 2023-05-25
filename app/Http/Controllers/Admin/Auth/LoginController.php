@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use Auth;
+use Closure;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
