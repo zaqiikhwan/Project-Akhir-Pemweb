@@ -10,7 +10,11 @@ export default {
         primary : {
           500 : "#EF7D00"
         }
+      },
+      fontFamily : {
+        jost : ['Jost', 'sans-serif']
       }
+
     },
   },
   plugins: [],
