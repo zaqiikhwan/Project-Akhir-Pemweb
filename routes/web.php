@@ -27,11 +27,11 @@ Route::get('/news', [NewsController::class, 'read']);
 
 // Route::view('/test', 'create');
 
-Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
-Route::post('/upload/proses', [UploadController::class, 'proses_upload']);
-Route::get('/upload/hapus/{id}', [UploadController::class, 'delete']);
-Route::get('/upload/edit/{id}', [UploadController::class, 'editNews']);
-Route::patch('/upload/update', [UploadController::class, 'edit']);
+Route::get('/upload', [UploadController::class, 'upload'])->name('upload')->middleware('auth');
+Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->middleware('auth');
+Route::get('/upload/hapus/{id}', [UploadController::class, 'delete'])->middleware('auth');
+Route::get('/upload/edit/{id}', [UploadController::class, 'editNews'])->middleware('auth');
+Route::patch('/upload/update', [UploadController::class, 'edit'])->middleware('auth');
 
 Route::get('/admin', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
