@@ -52,4 +52,35 @@
             </section>
         </div>
     </main>
+    {{-- Agenda Sementara --}}
+    <main class="bg-primary-500 mb-12 flex">
+        <section class="basis-1/12 flex items-center">
+            <img src="{{ asset('images/logo-side.svg') }}" alt="side logo">
+        </section>
+        <section class="basis-6/12 relative p-12 text-white pb-24">
+            <h1 class="text-3xl font-bold mb-4">Lorem Ipsum Dolor </h1>
+            <span>12 Agustus 2023</span>
+            <p class="mt-4">Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor.....</p>
+            <section class="self-end mt-4 absolute right-8 bottom-8">
+                <button class="btn-secondary" disabled><</button>
+                <button class="btn-secondary">></button>
+            </section>
+        </section>
+        <section class="basis-5/12">
+            <img 
+                src="{{ asset('https://placekitten.com/400/400') }}" 
+                alt="image"
+                class="w-full h-96 object-cover">
+        </section>
+    </main>
+    {{-- Lokasi --}}
+    <main class="container mx-auto mb-6">
+        <h2 class="text-primary-500 font-bold mb-12">Lokasi</h2>
+        <a href="https://www.google.com/maps/place/Palengaan+Laok,+Palengaan,+Pamekasan+Regency,+East+Java/@-7.058905,113.3957703,14z/data=!3m1!4b1!4m6!3m5!1s0x2dd9d36fb7039871:0x64ad246dc2cb5e28!8m2!3d-7.0561494!4d113.4121233!16s%2Fg%2F12lng_4nd" target="blank">
+            <img 
+                src="{{ asset('images/map.png') }}" 
+                alt="maps"
+                class="w-full">
+        </a>
+    </main>
 @endsection
