@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tutorial Laravel #30 : Membuat Upload File Dengan Laravel</title>
+	<title>News Admin</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
@@ -9,7 +9,7 @@
 	<div class="row">
 		<div class="container">
 
-			<h2 class="text-center my-5">Patch File Dengan Laravel</h2>
+			<h2 class="text-center my-5">CRUD News Page</h2>
 
 			<div class="col-lg-8 mx-auto my-5">
 
@@ -21,7 +21,7 @@
 				</div>
 				@endif
 
-				<form action="/upload/update" method="POST" enctype="multipart/form-data">
+				<form action="/news/update" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
                     @method('PATCH')
                     <input type="hidden" name="id" value="{{ $news->id }}">
@@ -55,14 +55,6 @@
                         <td><img width="150px" src="{{ url('/data_file/'.$news->image) }}"></td>
                         <td>{{$news->title}}</td>
                         <td>{{ $news->content }}</td>
-
-						{{-- @foreach($news as $g)
-						<tr>
-							<td>{{$g->title}}</td>
-							<td><a class="btn btn-danger" href="/upload/hapus/{{ $g->id }}">Hapus</a></td>
-							<td><a class="btn btn-danger" href="/upload/edit/{{ $g->id }}">Edit</a></td>
-						</tr>
-						@endforeach --}}
 					</tbody>
 				</table>
 			</div>

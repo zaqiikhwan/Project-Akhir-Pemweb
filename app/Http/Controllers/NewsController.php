@@ -3,77 +3,86 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class NewsController extends Controller
 {
     //
+    public function upload(){
+        $news = News::all();
+		return view('news.news', ['news' => $news]);
+	}
 
-    public function createNews(array $request) {
-        // Validator::make($request, [
-        //     'title' => ['string', 'max:255'],
-        //     'content' => ['string'],
-        //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
-        // ]);
+	public function proses_upload(Request $request){
+		$this->validate($request, [
+			'file' => 'required|file|image|mimes:jpeg,png,jpg,gif,svg',
+            'title' => 'required',
+            'content' => 'required',
+		]);
 
-        if ($request['foto'] != null) {
-            $filenameWithExt = $request['foto']->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request['foto']->getClientOriginalExtension();
-            $filenameSimpan = $filename.'_'.time().'.'.$extension;
-            $path = $request['foto']->storeAs('public/foto', $filenameSimpan);
+		// menyimpan data file yang diupload ke variabel $file
+		$file = $request->file('file');
+        $title = $request->input('title');
+        $content = $request->input('content');
+        $date = time();
+
+        // isi dengan nama folder tempat kemana file diupload
+        // untuk menghubungkan dengan local storage perlu menjalankan command
+        // php artisan storage:link
+        // jika folder belum ada maka akan dicreate
+		$tujuan_upload = 'data_file';
+
+        $nama_file = time()."_".$file->getClientOriginalName();
+        // upload file
+		$file->move($tujuan_upload, $nama_file);
+
+        News::create([
+            'title' => $title,
+            'content' => $content,
+            'image' => $nama_file,
+            'date' => $date,
+        ]);
+
+        return redirect()->back();
+	}
+
+    public function delete($id) {
+        $news = News::find($id);
+        File::delete('data_file/'.$news->image);
+        $news->delete();
+        return redirect()->back();
+    }
+
+    public function editNews($id){
+        $news = News::find($id);
+        return view('news.edit', ['news' => $news]);
+    }
+
+    public function edit(Request $request){
+
+        $file = $request->file('file');
+        $news = News::find($request->id);
+        if ($file == null) {
+            News::where('id', $request->id)->update([
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+            ]);
         } else {
-            $filenameSimpan = 'noimage.jpg';
+            File::delete('data_file/'.$news->image);
+            $tujuan_upload = 'data_file';
+            $nama_file = time()."_".$file->getClientOriginalName();
+            // upload file
+            $file->move($tujuan_upload, $nama_file);
+
+            News::where('id', $request->id)->update([
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+                'image' => $nama_file,
+                // 'date' => time(),
+            ]);
         }
 
-        return News::create([
-            // 'title' => $request['title'],
-            // 'content' => $request['content'],
-            'image' => $path,
-            'date' => time().now(),
-        ]);
-        // $news = new News;
-        // $news->date = time().now();
-        // $news->title = $request['title'];
-        // $news->content = $request['content'];
-        // $news->image = $path;
-        // $news->save();
+        return redirect()->route('upload');
     }
-
-    public function create()
-    {
-        News::create([
-            'id' => 'test',
-            'title' => 'My first news',
-            'content' => 'This is my first news',
-            'image' => 'https://example.com/image.jpg',
-            'date' => '2021-05-24',
-        ]);
-
-        // $news->id;
-
-        return view('news', [
-            'data' => "berita berhasil ditambahkan",
-        ]);
-    }
-
-    public function read()
-    {
-        // paginate news, ketika lanjut ?news=2 maka akan menampilkan halaman 2
-        $news = News::paginate(2);
-        $total = News::count();
-
-
-        return view('news', [
-            'news' => $news,
-            'total' => $total,
-        ]);
-
-        // return $news;
-    }
-
-
-
 }
