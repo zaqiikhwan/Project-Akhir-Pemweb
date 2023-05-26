@@ -6,17 +6,27 @@
     *{
         @apply font-jost
     }
+
     nav{
-        @apply container flex justify-between m-auto
+        @apply bg-white z-10
     }
     nav ul{
         @apply flex items-center gap-10 font-semibold
     }
+
     h1{
         @apply text-7xl
     }
+
     h2{
         @apply text-4xl
+    }
+
+    ol{
+        @apply list-decimal
+    }
+    ol>li{
+        @apply ms-4
     }
 }
 
