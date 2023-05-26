@@ -24,6 +24,13 @@
     .btn-primary{
         @apply bg-primary-500 text-white px-4 py-2 font-bold
     }
+    .btn-primary:disabled{
+        @apply bg-white text-gray-300
+    }
+    
+    .card{
+        @apply bg-gray-200 border-[1px] border-primary-500
+    }
 }
 
 @layer utilities{
