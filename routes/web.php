@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\Profile;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Models\News;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('user.pages.home');
 });
+
+Route::get('/profile/{params}', [Profile::class, 'view']);
 
 Route::get('/news', [NewsController::class, 'read']);
 // Route::post('/create-news', [NewsController::class, 'createNews']);
