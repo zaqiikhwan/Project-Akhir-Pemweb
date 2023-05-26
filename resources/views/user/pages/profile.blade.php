@@ -23,7 +23,7 @@
                 @endif">Forum/Komunitas</a>
             </div>
         </aside>
-        <div class="basis-2/3 py-16">
+        <div class="basis-2/3 py-16 mb-16">
             @switch($params)
                 @case("pemerintah")
                     <x-profile.pemerintah/>
