@@ -17,4 +17,5 @@
                 class="h-80">
         </div>
     </main>
+    <x-pray-schedule/>
 @endsection
