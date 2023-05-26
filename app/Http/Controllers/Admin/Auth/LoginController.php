@@ -25,10 +25,10 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($data)){
-            return redirect('home');
+            return redirect('/admin/home');
         }else{
             Session::flash('error', 'Email atau Password Salah');
-            return redirect('/');
+            return redirect('/admin');
         }
     }
 
