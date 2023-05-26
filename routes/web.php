@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\Profile;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
@@ -37,6 +38,8 @@ Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actio
 Route::get('/admin/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
+Route::resource('agendas', AgendaController::class);
+Route::get('agendas', [AgendaController::class, 'index'])->name('agenda.index');
 
 
 
