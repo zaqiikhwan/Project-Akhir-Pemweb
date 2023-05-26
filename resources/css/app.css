@@ -28,6 +28,9 @@
     ol>li{
         @apply ms-4
     }
+
+    /* =====================Admin====================== */
+
 }
 
 @layer components{
@@ -47,6 +50,21 @@
     
     .card{
         @apply bg-gray-200 border-[1px] border-primary-500
+    }
+
+    /* =====================Admin====================== */
+
+    .admin .sidebar{
+        @apply border-2 border-primary-500 rounded-lg p-1 w-full
+    }
+    .admin .sidebar a{
+        @apply p-3 rounded-md text-gray-800 text-xl font-medium mb-1 transition-all
+    }
+    .admin .sidebar a:hover{
+        @apply bg-primary-500 bg-opacity-50 text-white
+    }
+    .admin .sidebar a.active{
+        @apply bg-primary-500 text-white
     }
 }
 
