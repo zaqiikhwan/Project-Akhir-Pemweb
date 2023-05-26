@@ -4,12 +4,12 @@
 
 @section('content')
     <header 
-        class="w-full container mx-auto py-16 bg-no-repeat bg-cover bg-center mb-12"
+        class="w-full container mx-auto py-16 bg-no-repeat bg-cover bg-center mb-14"
         style="background-image: url({{asset("images/profile-bg.jpg")}})">
         <h1 class="text-white font-bold text-center">Profil</h1>
     </header>
     <main class="container mx-auto flex">
-        <aside class="basis-1/3">
+        <aside class="basis-1/3 pr-52">
             <h2 class="text-primary-500 mb-4">Kategori</h2>
             <div class="flex flex-col card">
                 <a href="pemerintah" class="p-4 text-xl @if ($params == "pemerintah")
@@ -23,7 +23,7 @@
                 @endif">Forum/Komunitas</a>
             </div>
         </aside>
-        <div class="basis-2/3 p-8">
+        <div class="basis-2/3 py-16">
             @switch($params)
                 @case("pemerintah")
                     <x-profile.pemerintah/>
