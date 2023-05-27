@@ -14,7 +14,7 @@
             <em class="block mb-8">{{$news->created_at}}</em>
         </header>
         <div class="basis-2/3">
-            <img src="/data_file/{{$news->image}}" alt="imagenews" class="aspect-[2/1] object-cover mb-4">
+            <img src="/data_file/{{$news->image}}" alt="imagenews" class="aspect-[2/1] object-cover mb-4 w-full">
             <pre>
                 {{$news->content}}
             </pre>
