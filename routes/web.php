@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(Homepage::class)->group(function(){
     Route::get('/','home');
     Route::get('/profile/{params}','profile');
+    Route::get('/news','news');
 });
 
 Route::prefix('admin')->group(function(){
