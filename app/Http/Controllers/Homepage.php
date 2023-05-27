@@ -26,4 +26,13 @@ class Homepage extends Controller
             'cur'=>$cur,
             'max'=>$max]);
     }
+
+    public function newsdetail($id){
+        $news = News::find($id);
+        $other = News::take(3)->get();
+
+        return view('user.pages.news-detail',
+            ["news"=>$news,
+            "other"=>$other]);
+    }
 }

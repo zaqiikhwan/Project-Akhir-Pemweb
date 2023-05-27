@@ -29,6 +29,9 @@
         @apply ms-4
     }
 
+    pre{
+        @apply overflow-auto bg-transparent whitespace-pre-wrap text-justify font-jost
+    }
     /* =====================Admin====================== */
 
     .admin *{

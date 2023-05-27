@@ -25,6 +25,7 @@ Route::controller(Homepage::class)->group(function(){
     Route::get('/','home');
     Route::get('/profile/{params}','profile');
     Route::get('/news','news');
+    Route::get('/news/{id}','newsdetail');
 });
 
 Route::prefix('admin')->group(function(){
