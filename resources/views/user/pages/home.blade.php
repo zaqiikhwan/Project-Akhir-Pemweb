@@ -8,7 +8,7 @@
         style="background-image: url({{asset("images/background.jpg")}})">
         <div class="flex items-center container mx-auto justify-between">
             <section>
-                <h1 class="font-bold mb-2 text-transparent text-stroke">Palengaan Laok</h1>
+                <h1 class="font-bold mb-6 text-transparent text-stroke">Palengaan Laok</h1>
                 <h2 class="text-white">Bersahabat Kepada Masyarakat</h2>
             </section>
             <img 
@@ -19,14 +19,13 @@
     </main>
     <x-pray-schedule/>
     {{-- News Sementara --}}
-    
-    <main class="flex container mx-auto py-24 gap-12">
+    <main class="flex container mx-auto my-[120px] gap-12">
         <div class="basis-2/3">
             <x-news-slide/>
         </div>
         <div class="basis-1/3">
-            <h2 class="font-bold text-primary-500 mb-2">Pengumuman</h2>
-            <section class="bg-primary-500 h-5/6 p-4 flex flex-col">
+            <h2 class="font-bold text-primary-500 mb-4">Pengumuman</h2>
+            <section class="bg-primary-500 h-5/6 p-7 flex flex-col">
                 <ul class="flex flex-col gap-2 text-primary-500 text-xl font-medium">
                     <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
                     <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
@@ -35,12 +34,12 @@
                     <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
                     <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
                 </ul>
-                <button class="card p-2 text-primary-500 font-semibold self-end mt-4">Selengkapnya</button>
+                <button class="card px-4 py-2 text-primary-500 font-bold self-end mt-7">Selengkapnya</button>
             </section>
         </div>
     </main>
     {{-- Agenda Sementara --}}
-    <main class="bg-primary-500 mb-12 flex">
+    <main class="bg-primary-500 my-[120px] flex">
         <section class="basis-1/12 flex items-center">
             <img src="{{ asset('images/logo-side.svg') }}" alt="side logo">
         </section>
@@ -61,8 +60,8 @@
         </section>
     </main>
     {{-- Lokasi --}}
-    <main class="container mx-auto mb-6">
-        <h2 class="text-primary-500 font-bold mb-12">Lokasi</h2>
+    <main class="container mx-auto my-[120px]">
+        <h2 class="text-primary-500 font-bold mb-4">Lokasi</h2>
         <a href="https://www.google.com/maps/place/Palengaan+Laok,+Palengaan,+Pamekasan+Regency,+East+Java/@-7.058905,113.3957703,14z/data=!3m1!4b1!4m6!3m5!1s0x2dd9d36fb7039871:0x64ad246dc2cb5e28!8m2!3d-7.0561494!4d113.4121233!16s%2Fg%2F12lng_4nd" target="blank">
             <img 
                 src="{{ asset('images/map.png') }}" 
