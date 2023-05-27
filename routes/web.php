@@ -23,14 +23,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('user.pages.home');
 });
-
 Route::get('/profile/{params}', [Profile::class, 'view']);
 
-Route::get('/news', [NewsController::class, 'upload'])->name('upload');
-Route::post('/news', [NewsController::class, 'proses_upload'])->middleware('auth');
-Route::get('/news/hapus/{id}', [NewsController::class, 'delete'])->middleware('auth');
-Route::get('/news/edit/{id}', [NewsController::class, 'editNews'])->middleware('auth');
-Route::patch('/news/update', [NewsController::class, 'edit'])->middleware('auth');
+Route::prefix('admin')->group(function(){
+    // News Route
+    Route::name('news')->group(function(){
+        Route::controller(NewsController::class)->group(function(){
+            Route::middleware(['auth'])->group(function(){
+                Route::get('/news', 'upload');
+                Route::post('/news', 'proses_upload');
+                Route::get('/news/hapus/{id}', 'delete');
+                Route::get('/news/edit/{id}',  'editNews');
+                Route::patch('/news/update', 'edit');
+            });
+        });
+    });
+});
 
 Route::get('/admin', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');

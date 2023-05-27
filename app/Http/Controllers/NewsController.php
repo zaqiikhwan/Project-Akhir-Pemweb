@@ -11,7 +11,7 @@ class NewsController extends Controller
     //
     public function upload(){
         $news = News::all();
-		return view('news.news', ['news' => $news]);
+		return view('admin.news.news', ['news' => $news]);
 	}
 
 	public function proses_upload(Request $request){
@@ -56,7 +56,7 @@ class NewsController extends Controller
 
     public function editNews($id){
         $news = News::find($id);
-        return view('news.edit', ['news' => $news]);
+        return view('admin.news.edit', ['news' => $news]);
     }
 
     public function edit(Request $request){

@@ -31,6 +31,9 @@
 
     /* =====================Admin====================== */
 
+    .admin *{
+        @apply font-poppins
+    }
 }
 
 @layer components{
@@ -58,7 +61,10 @@
         @apply border-2 border-primary-500 rounded-lg p-1 w-full
     }
     .admin .sidebar a{
-        @apply p-3 rounded-md text-gray-800 text-xl font-medium mb-1 transition-all
+        @apply p-3 rounded-md text-sky-950 text-base font-medium mb-1 transition-all flex gap-2 items-center no-underline
+    }
+    .admin .sidebar a .iconify{
+        @apply scale-125
     }
     .admin .sidebar a:hover{
         @apply bg-primary-500 bg-opacity-50 text-white

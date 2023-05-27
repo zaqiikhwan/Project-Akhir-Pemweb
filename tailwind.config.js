@@ -12,9 +12,9 @@ export default {
         }
       },
       fontFamily : {
-        jost : ['Jost', 'sans-serif']
+        jost : ['Jost', 'sans-serif'],
+        poppins : ['Poppins', 'sans-serif']
       }
-
     },
   },
   plugins: [],
