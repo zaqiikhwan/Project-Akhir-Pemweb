@@ -33,7 +33,7 @@
                         class="w-full aspect-[4/3] object-cover">
                     <h2 class="text-2xl font-bold m-4 mb-2 line-clamp-2">{{$i->title}}</h2>
                     <p class="line-clamp-4 mx-4">{{$i->content}}</p>
-                    <button class="btn-secondary bg-gray-200 float-right m-4">Selengkapnya</button>
+                    <a href="/news/{{$i->id}}" class="btn-secondary bg-gray-200 float-right m-4">Selengkapnya</a>
                 </div>
             @endforeach
         </div>
