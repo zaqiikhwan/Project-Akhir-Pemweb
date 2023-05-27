@@ -6,8 +6,9 @@
     *{
         @apply font-jost
     }
+
     nav{
-        @apply container flex justify-between m-auto
+        @apply bg-white z-10
     }
     nav ul{
         @apply flex items-center gap-10
@@ -15,11 +16,26 @@
     nav ul li {
         @apply hover:font-semibold
     }
+
     h1{
         @apply text-7xl
     }
+
     h2{
         @apply text-4xl
+    }
+
+    ol{
+        @apply list-decimal
+    }
+    ol>li{
+        @apply ms-4
+    }
+
+    /* =====================Admin====================== */
+
+    .admin *{
+        @apply font-poppins
     }
 }
 
@@ -40,6 +56,24 @@
     
     .card{
         @apply bg-gray-200 border-[1px] border-primary-500
+    }
+
+    /* =====================Admin====================== */
+
+    .admin .sidebar{
+        @apply border-2 border-primary-500 rounded-lg p-1 w-full
+    }
+    .admin .sidebar a{
+        @apply p-3 rounded-md text-sky-950 text-base font-medium mb-1 transition-all flex gap-2 items-center no-underline
+    }
+    .admin .sidebar a .iconify{
+        @apply scale-125
+    }
+    .admin .sidebar a:hover{
+        @apply bg-primary-500 bg-opacity-50 text-white
+    }
+    .admin .sidebar a.active{
+        @apply bg-primary-500 text-white
     }
 }
 

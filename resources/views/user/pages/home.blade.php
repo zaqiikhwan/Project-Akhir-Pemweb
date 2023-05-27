@@ -21,21 +21,7 @@
     {{-- News Sementara --}}
     <main class="flex container mx-auto my-[120px] gap-12">
         <div class="basis-2/3">
-            <h2 class="font-bold text-primary-500 mb-4">Berita</h2>
-            <section class="flex card h-5/6">
-                <img 
-                    src="{{ asset('https://placekitten.com/300/300') }}" 
-                    alt="image-news"
-                    class="basis-1/3 aspect-[2/3] object-cover">
-                <span class="basis-2/3 flex flex-col justify-center px-12 relative">
-                    <h1 class="text-3xl font-bold mb-4">Lorem Ipsum Dolor </h1>
-                    <p>Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor.....</p>
-                    <section class="self-end mt-4 absolute right-8 bottom-8">
-                        <button class="btn-primary" disabled><</button>
-                        <button class="btn-primary">></button>
-                    </section>
-                </span>
-            </section>
+            <x-news-slide/>
         </div>
         <div class="basis-1/3">
             <h2 class="font-bold text-primary-500 mb-4">Pengumuman</h2>
