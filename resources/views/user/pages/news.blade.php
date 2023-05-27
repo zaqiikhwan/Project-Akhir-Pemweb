@@ -4,10 +4,18 @@
 
 @section('content')
     <header 
-        class="w-full container mx-auto py-16 bg-no-repeat bg-cover bg-top mb-12"
+        class="w-full container mx-auto py-16 bg-no-repeat bg-cover bg-top mb-8"
         style="background-image: url({{asset("images/news-bg.jpg")}})">
         <h1 class="text-white font-bold text-center">Berita</h1>
     </header>
+    <section class="container mx-auto">
+        <form class="float-right border-primary-500 border-2 flex items-center gap-2 mb-8">
+            <button class="btn-primary inline-block h-full">
+                <span class="iconify" data-icon="material-symbols:search"></span>
+            </button>
+            <input type="text" name="key" placeholder="Apa berita yang anda cari?" class="w-64 outline-none">
+        </form>
+    </section>
     <main class="container mx-auto grid-cols-3 grid gap-4">
         @foreach ($news as $i)
             <div class="border-2 border-primary-500">
