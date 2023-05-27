@@ -3,7 +3,7 @@
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\Profile;
+use App\Http\Controllers\Homepage;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Models\News;
@@ -20,10 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.pages.home');
+// Homepage Route
+Route::controller(Homepage::class)->group(function(){
+    Route::get('/','home');
+    Route::get('/profile/{params}','profile');
 });
-Route::get('/profile/{params}', [Profile::class, 'view']);
+
 
 Route::prefix('admin')->group(function(){
     // News Route

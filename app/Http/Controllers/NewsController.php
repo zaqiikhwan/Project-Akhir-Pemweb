@@ -83,6 +83,6 @@ class NewsController extends Controller
             ]);
         }
 
-        return redirect()->route('upload');
+        return redirect()->back();
     }
 }
