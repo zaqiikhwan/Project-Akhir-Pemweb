@@ -26,7 +26,6 @@ Route::controller(Homepage::class)->group(function(){
     Route::get('/profile/{params}','profile');
 });
 
-
 Route::prefix('admin')->group(function(){
     // News Route
     Route::name('news')->group(function(){
