@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 class Sidenav extends Component
 {
@@ -23,7 +24,9 @@ class Sidenav extends Component
     public function render(): View|Closure|string
     {
         $routeName = Route::currentRouteName();
-        // dd($routeName);
+        if (Str::contains($routeName, "agenda")) {
+            $routeName = "agenda";
+        } 
         return view('components.sidenav',["route"=>$routeName]);
     }
 }

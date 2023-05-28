@@ -1,6 +1,6 @@
-@extends('agenda.layout')
-   
-@section('container')
+@extends('admin.layouts.main')
+  
+@section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">

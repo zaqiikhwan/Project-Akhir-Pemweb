@@ -30,15 +30,22 @@ Route::controller(Homepage::class)->group(function(){
 });
 
 Route::prefix('admin')->group(function(){
-    // News Route
-    Route::name('news')->group(function(){
-        Route::controller(NewsController::class)->group(function(){
-            Route::middleware(['auth'])->group(function(){
+    Route::middleware(['auth'])->group(function(){
+        // News Route
+        Route::name('news')->group(function(){
+            Route::controller(NewsController::class)->group(function(){
                 Route::get('/news', 'upload');
                 Route::post('/news', 'proses_upload');
                 Route::get('/news/hapus/{id}', 'delete');
                 Route::get('/news/edit/{id}',  'editNews');
                 Route::patch('/news/update', 'edit');
+            });
+        });
+
+        // Agenda Route
+        Route::name('agenda')->group(function(){
+            Route::controller(AgendaController::class) -> group(function(){
+                Route::get('/agenda', 'index')->name('agenda.index');
             });
         });
     });
@@ -49,11 +56,9 @@ Route::get('/payment/test', [PaymentsController::class, 'qrisTransferCharge']);
 Route::get('/admin', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
+Route::resource('/agenda',AgendaController::class);
 Route::get('/admin/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
-
-Route::resource('agendas', AgendaController::class);
-Route::get('agendas', [AgendaController::class, 'index'])->name('agenda.index');
 
 
 
