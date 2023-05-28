@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('umkms', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->string('product_name', 255)->nullable(false);
-            $table->string('image')->nullable(false);
+            $table->string('product_name')->nullable(false)->unique();
             $table->text('description')->nullable(false);
-            $table->string('contact')->nullable(false);
+            $table->string('image')->nullable(false);
+            $table->integer('product_stock')->nullable(false);
+            $table->decimal('price', 10, 2)->default(0.00);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('umkms');
+        Schema::dropIfExists('products');
     }
 };
