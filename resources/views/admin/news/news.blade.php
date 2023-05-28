@@ -27,17 +27,21 @@
 					{{ csrf_field() }}
 
 					<div class="form-group">
-						<b>File Gambar</b><br/>
+						<strong>File Gambar</strong><br/>
 						<input type="file" name="file">
 					</div>
 					<div class="form-group">
-						<b>Title</b>
+						<strong>Judul</strong>
 						<textarea class="form-control" name="title"></textarea>
 					</div>
 					<div class="form-group">
-						<b>Content</b>
+						<strong>Konten</strong>
 						<textarea class="form-control" name="content"></textarea>
 					</div>
+                    <div class="form-group">
+                        <strong>Tanggal</strong>
+                        <input type="date" name="date" class="form-control" placeholder="Date">
+                    </div>
 
 					<input type="submit" value="Upload" class="btn btn-primary">
 				</form>
