@@ -18,11 +18,11 @@
     </section>
     <section class="grid grid-cols-3 container mx-auto mb-8 gap-4">
         @foreach (range(1,10) as $i)
-            <span class="bg-gray-100 rounded-md shadow-md hover:shadow-lg hover:border-2">
+            <span class="bg-gray-100 rounded-md shadow-md hover:shadow-xl hover:bg-gray-200">
                 <img
                     src="https://placekitten.com/300/300"
                     alt="imageprodcut"
-                    class="w-full aspect-video object-cover">
+                    class="w-full aspect-video object-cover rounded-t-md">
                 <div class="p-4">
                     <h2 class="text-xl font-semibold">Lorem Ipsum Dolor</h2>
                     <p class="mb-4">Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor</p>

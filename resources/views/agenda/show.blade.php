@@ -22,7 +22,21 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Image:</strong>
-                <img src="/data_file/{{ $agenda->image }}" width="500px">
+                @foreach(explode('|', $agenda->images) as $image)
+                    <img src="{{ asset('/data_file/'.$image) }}" width="100px" class="mb-3 mt-3">
+                @endforeach
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Content:</strong>
+                {{ $agenda->content }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Date:</strong>
+                {{ $agenda->date }}
             </div>
         </div>
     </div>
