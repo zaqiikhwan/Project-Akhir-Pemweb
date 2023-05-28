@@ -5,10 +5,9 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
+use App\Models\Agenda;
 
-class Sidenav extends Component
+class AgendaSlide extends Component
 {
     /**
      * Create a new component instance.
@@ -23,10 +22,7 @@ class Sidenav extends Component
      */
     public function render(): View|Closure|string
     {
-        $routeName = Route::currentRouteName();
-        if (Str::contains($routeName, "agenda")) {
-            $routeName = "agenda";
-        } 
-        return view('components.sidenav',["route"=>$routeName]);
+        $agendas = Agenda::all();
+        return view('components.agenda-slide',['agendas'=>$agendas]);
     }
 }

@@ -1,6 +1,6 @@
-@extends('agenda.layout')
+@extends('admin.layouts.main')
   
-@section('container')
+@section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb mt-5">
         <div class="pull-left">
@@ -23,7 +23,7 @@
     </div>
 @endif
      
-<form action="{{ route('agendas.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('agenda.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     
      <div class="row mb-3">

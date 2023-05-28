@@ -1,6 +1,6 @@
-@extends('agenda.layout')
-     
-@section('container')
+@extends('admin.layouts.main')
+  
+@section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -23,7 +23,7 @@
         </div>
     @endif
     
-    <form action="{{ route('agendas.update',$agenda->id) }}" method="POST" enctype="multipart/form-data"> 
+    <form action="{{ route('agenda.update',$agenda->id) }}" method="POST" enctype="multipart/form-data"> 
         @csrf
         @method('PUT')
      
