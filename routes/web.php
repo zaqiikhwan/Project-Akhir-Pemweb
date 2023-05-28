@@ -54,7 +54,7 @@ Route::prefix('admin')->group(function(){
     });
 });
 
-Route::get('/payment/test', [PaymentsController::class, 'qrisTransferCharge']);
+Route::get('api/payment/test', [PaymentsController::class, 'qrisTransferCharge']);
 
 Route::get('/admin', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
