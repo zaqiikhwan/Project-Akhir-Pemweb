@@ -18,14 +18,14 @@
     </section>
     <main class="container mx-auto grid-cols-3 grid gap-4">
         @foreach ($news as $i)
-            <div class="border-2 border-primary-500">
+            <div class="bg-gray-100 shadow-sm rounded-lg hover:shadow-md">
                 <img
                     src="/data_file/{{$i->image}}"
                     alt="newsimage"
-                    class="w-full aspect-[4/3] object-cover">
+                    class="w-full aspect-[4/3] object-cover rounded-t-md">
                 <h2 class="text-2xl font-bold m-4 mb-2 line-clamp-2">{{$i->title}}</h2>
                 <p class="line-clamp-4 mx-4">{{$i->content}}</p>
-                <a href="/news/{{$i->id}}" class="btn-secondary bg-gray-200 float-right m-4">Selengkapnya</a>
+                <a href="/news/{{$i->id}}" class="btn-primary float-right m-4">Selengkapnya</a>
             </div>
         @endforeach
     </main>

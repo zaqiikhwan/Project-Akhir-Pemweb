@@ -36,7 +36,19 @@
         <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
             <div class="form-group">
                 <strong>Image:</strong>
-                <input type="file" name="image" class="form-control" placeholder="image">
+                <input type="file" name="images[]" class="form-control" placeholder="image" multiple>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+            <div class="form-group">
+                <strong>Content:</strong>
+                <input type="text" name="content" class="form-control" placeholder="Content">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
+            <div class="form-group">
+                <strong>Date:</strong>
+                <input type="date" name="date" class="form-control" placeholder="Date">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

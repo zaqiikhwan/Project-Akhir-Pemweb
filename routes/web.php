@@ -3,6 +3,8 @@
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Profile;
 use App\Http\Controllers\Homepage;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
@@ -63,5 +65,14 @@ Route::resource('/agenda',AgendaController::class);
 Route::get('/admin/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
+Route::resource('agendas', AgendaController::class)->middleware('auth');
+Route::get('agendas', [AgendaController::class, 'index'])->name('agenda.index')->middleware('auth');
+
+Route::resource('products', ProductController::class)->middleware('auth');
+Route::get('products', [ProductController::class, 'index'])->name('product.index')->middleware('auth');
+<<<<<<< HEAD
+
+=======
+>>>>>>> 33436d11a0256c289dc1129f1e946c8e53750539
 
 

@@ -37,8 +37,22 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Image:</strong>
-                    <input type="file" name="image" class="form-control" placeholder="image">
-                    <img src="/data_file/{{ $agenda->image }}" width="300px" class="mt-3">
+                    <input type="file" name="images[]" class="form-control" placeholder="image" multiple>
+                    @foreach(explode('|', $agenda->images) as $image)
+                        <img src="{{ asset('/data_file/'.$image) }}" width="100px" class="mb-3 mt-3">
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Content:</strong>
+                    <input type="text" name="content" value="{{ $agenda->content }}" class="form-control" placeholder="Content">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Date:</strong>
+                    <input type="date" name="date" value="{{ $agenda->date }}" class="form-control" placeholder="Date">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
