@@ -1,15 +1,12 @@
 <?php
 
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Profile;
 use App\Http\Controllers\Homepage;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
 /*
