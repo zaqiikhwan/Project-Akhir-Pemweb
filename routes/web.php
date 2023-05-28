@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function(){
         // News Route
         Route::name('news')->group(function(){
             Route::controller(NewsController::class)->group(function(){
-                Route::get('/news', 'upload');
+                Route::get('/news', 'upload')->name('news.index');
                 Route::post('/news', 'proses_upload');
                 Route::get('/news/hapus/{id}', 'delete');
                 Route::get('/news/edit/{id}',  'editNews');
@@ -52,6 +52,8 @@ Route::prefix('admin')->group(function(){
         });
     });
 });
+
+// Route::get('admin/news', [NewsController::class, 'upload'])->name('news.index');
 
 Route::get('api/payment/test', [PaymentsController::class, 'qrisTransferCharge']);
 

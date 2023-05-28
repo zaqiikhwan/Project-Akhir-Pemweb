@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\View\View;
 
 class NewsController extends Controller
 {
     //
-    public function upload(){
+    public function upload(): View|string {
         $news = News::all();
 		return view('admin.news.news', ['news' => $news]);
 	}
@@ -84,6 +85,6 @@ class NewsController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        return redirect()->route('news.index');
     }
 }

@@ -51,9 +51,10 @@
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th width="1%">File</th>
-							<th>Title</th>
-                            <th>Content</th>
+							<th width="1%">Gambar</th>
+							<th>Judul</th>
+                            <th>Konten</th>
+                            <th>Tanggal</th>
 							<th width="1%">Opsi</th>
 						</tr>
 					</thead>
@@ -63,11 +64,11 @@
 							<td><img width="150px" src="{{ url('/data_file/'.$g->image) }}"></td>
 							<td>{{$g->title}}</td>
                             <td>{{$g->content}}</td>
+                            <td>{{$g->date->format('y-m-H')}}</td>
 							<td>
                                 <a class="btn btn-danger" href="/admin/news/hapus/{{ $g->id }}">Hapus</a>
                                 <a class="btn btn-danger" href="/admin/news/edit/{{ $g->id }}">Edit</a>
                             </td>
-							{{-- <td></td> --}}
 						</tr>
 						@endforeach
 					</tbody>
