@@ -25,7 +25,7 @@ class NewsController extends Controller
 		$file = $request->file('file');
         $title = $request->input('title');
         $content = $request->input('content');
-        $date = time();
+        $date = $request->input('date');
 
         // isi dengan nama folder tempat kemana file diupload
         // untuk menghubungkan dengan local storage perlu menjalankan command
@@ -67,6 +67,7 @@ class NewsController extends Controller
             News::where('id', $request->id)->update([
                 'title' => $request->input('title'),
                 'content' => $request->input('content'),
+                'date' => $request->input('date'),
             ]);
         } else {
             File::delete('data_file/'.$news->image);
@@ -78,8 +79,8 @@ class NewsController extends Controller
             News::where('id', $request->id)->update([
                 'title' => $request->input('title'),
                 'content' => $request->input('content'),
+                'date' => $request->input('date'),
                 'image' => $nama_file,
-                // 'date' => time(),
             ]);
         }
 
