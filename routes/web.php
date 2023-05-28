@@ -4,6 +4,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\Homepage;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Models\News;
@@ -42,6 +43,8 @@ Route::prefix('admin')->group(function(){
         });
     });
 });
+
+Route::get('/payment/test', [PaymentsController::class, 'qrisTransferCharge']);
 
 Route::get('/admin', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
