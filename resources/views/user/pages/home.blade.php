@@ -18,7 +18,7 @@
         </div>
     </main>
     <x-pray-schedule/>
-    {{-- News Sementara --}}
+    {{-- News --}}
     <main class="flex container mx-auto my-[120px] gap-12">
         <div class="basis-2/3">
             <x-news-slide/>
@@ -38,27 +38,8 @@
             </section>
         </div>
     </main>
-    {{-- Agenda Sementara --}}
-    <main class="bg-primary-500 my-[120px] flex">
-        <section class="basis-1/12 flex items-center">
-            <img src="{{ asset('images/logo-side.svg') }}" alt="side logo">
-        </section>
-        <section class="basis-6/12 relative p-12 text-white pb-24">
-            <h1 class="text-3xl font-bold mb-4">Lorem Ipsum Dolor </h1>
-            <span>12 Agustus 2023</span>
-            <p class="mt-4">Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor.....</p>
-            <section class="self-end mt-4 absolute right-8 bottom-8">
-                <button class="btn-secondary" disabled><</button>
-                <button class="btn-secondary">></button>
-            </section>
-        </section>
-        <section class="basis-5/12">
-            <img 
-                src="{{ asset('https://placekitten.com/400/400') }}" 
-                alt="image"
-                class="w-full h-96 object-cover">
-        </section>
-    </main>
+    {{-- Agenda --}}
+    <x-agenda-slide/>
     {{-- Lokasi --}}
     <main class="container mx-auto my-[120px]">
         <h2 class="text-primary-500 font-bold mb-4">Lokasi</h2>
