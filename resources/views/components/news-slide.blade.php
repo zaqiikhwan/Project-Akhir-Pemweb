@@ -1,5 +1,5 @@
 <h2 class="font-bold text-primary-500 mb-4">Berita</h2>
-            <section class="flex card h-5/6 rounded-md shadow-lg">
+            <section class="flex card h-5/6 rounded-md shadow-lg overflow-hidden">
                 <img 
                     src="{{ asset('https://placekitten.com/1200/1200') }}" 
                     alt="image-news"
@@ -7,11 +7,13 @@
                     id="news-image">
                 <span class="basis-2/3 flex flex-col justify-center px-12 relative">
                     <section class="h-3/5 mb-12">
-                        <h1
-                            class="text-3xl font-bold mb-4 line-clamp-2"
-                            id="news-title">
-                            Lorem Ipsum Dolor
-                        </h1>
+                        <a id="news-link">
+                            <h1
+                                class="text-3xl font-bold mb-4 line-clamp-2 cursor-pointer"
+                                id="news-title">
+                                Lorem Ipsum Dolor
+                            </h1>
+                        </a>
                         <p 
                             id="news-content"
                             class="line-clamp-6 2xl:line-clamp-[8]"
@@ -33,6 +35,7 @@
     let content = document.getElementById("news-content");
     let prev = document.getElementById("prev-button");
     let next = document.getElementById("next-button");
+    let newsLink = document.getElementById("news-link");
 
     const checkButton = () => {
         prev.disabled = index == 0;
@@ -40,10 +43,16 @@
     }
 
     const setSlide = (idx) => {
-        image.src = `/data_file/${data[idx].image}`
+        image.classList.remove("fadeInLeft-animation");
+        image.src = `/data_file/${data[idx].image}`;
         title.innerText = data[idx].title;
         content.innerText = data[idx].content;
+        newsLink.setAttribute('href','/news/'+data[idx].id);
     }
+
+    image.addEventListener('load', () => {
+        image.classList.add("fadeInLeft-animation");
+    })
 
     const slideHandler = (i) => {
         if(index + i >= 0 && index + i < max){

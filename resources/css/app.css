@@ -91,6 +91,10 @@
     .fadeIn-animation{
         animation: fadeInFromRight 0.3s;
     }
+
+    .fadeInLeft-animation{
+        animation: fadeInFromLeft 0.3s;
+    }
 }
 
 @layer utilities{
@@ -109,3 +113,8 @@
   0% { opacity: 0; transform: translateX(250px);}
   100% { opacity: 1; transform: translateX(0px);}
 }
+
+@keyframes fadeInFromLeft {
+    0% { opacity: 0; transform: translateX(-250px);}
+    100% { opacity: 1; transform: translateX(0px);}
+  }
