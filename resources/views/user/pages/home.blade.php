@@ -6,15 +6,15 @@
     <main 
         class="h-[calc(100vh-68px)] w-full bg-bottom flex items-center bg-no-repeat bg-cover"
         style="background-image: url({{asset("images/background.jpg")}})">
-        <div class="flex items-center container mx-auto justify-between">
-            <section>
+        <div class="flex items-center container mx-auto justify-between overflow-hidden">
+            <section class="fadeInLeft-animation">
                 <h1 class="font-bold mb-6 text-transparent text-stroke text-8xl">Palengaan Laok</h1>
                 <h2 class="text-white">Bersahabat Kepada Masyarakat</h2>
             </section>
             <img 
                 src="{{asset("images/logo-big.svg")}}" 
                 alt="big logo"
-                class="h-80">
+                class="h-80 fadeInRight-animation">
         </div>
     </main>
     <x-pray-schedule/>
