@@ -5,7 +5,7 @@
         </a>
         <ul>
             @foreach ($links as $link)
-            <li class="@if($link == $active) text-primary-500 @endif">
+            <li class="@if($link == $active) text-primary-500 font-bold underline underline-offset-[12px] @endif">
                 <a href="/">{{$link}}</a>
             </li>
             @endforeach

@@ -5,6 +5,10 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
+
+@extends('admin.layouts.main')
+
+@section('content')	
 <body>
 	<div class="row">
 		<div class="container">
@@ -21,7 +25,11 @@
 				</div>
 				@endif
 
+<<<<<<<< HEAD:resources/views/news/edit.blade.php
 				<form action="/news/update" method="POST" enctype="multipart/form-data">
+========
+				<form action="/admin/news/update" method="POST" enctype="multipart/form-data">
+>>>>>>>> 5fe22667e4b11255fe6485ac705aaab6ca95f1b7:resources/views/admin/news/edit.blade.php
 					{{ csrf_field() }}
                     @method('PATCH')
                     <input type="hidden" name="id" value="{{ $news->id }}">
@@ -61,4 +69,5 @@
 		</div>
 	</div>
 </body>
+@endsection
 </html>
