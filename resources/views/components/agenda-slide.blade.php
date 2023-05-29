@@ -32,7 +32,7 @@
     let nextAgenda = document.getElementById("next-agenda");
 
     let setAgenda = (i) => {
-        Agendaimage.classList.remove("fadeIn-animation");
+        Agendaimage.classList.remove("fadeInRight-animation");
         Agendaimage.src = `/data_file/${agendas[i].images}`;
         Agendadate.innerText = agendas[i].date;
         Agendatitle.innerText = agendas[i].title;
@@ -40,7 +40,7 @@
     }
 
     Agendaimage.addEventListener('load', () => {
-        Agendaimage.classList.add("fadeIn-animation");
+        Agendaimage.classList.add("fadeInRight-animation");
     })
 
     const checkButtonAgenda = () => {

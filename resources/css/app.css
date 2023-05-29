@@ -86,11 +86,28 @@
     }
     .payment-modal .modal-content{
         animation: fadeInFromBottom 0.3s;
+
+    .pray-schedule{
+        @apply flex flex-col items-center bg-white text-primary-500 p-8 justify-center basis-1/5 rounded-md 
     }
 
     .fadeIn-animation{
         animation: fadeInFromRight 0.3s;
     }
+
+    .fadeInLeft-animation{
+        animation: fadeInFromLeft 0.8s;
+    }
+
+    .fadeInRight-animation{
+        animation: fadeInFromRight 0.8s;
+    }
+
+    .fadeInBottom-animation{
+        animation: fadeInFromBottom 0.8s;
+        animation-fill-mode: forwards;
+    }
+
 }
 
 @layer utilities{
@@ -109,3 +126,8 @@
   0% { opacity: 0; transform: translateX(250px);}
   100% { opacity: 1; transform: translateX(0px);}
 }
+
+@keyframes fadeInFromLeft {
+    0% { opacity: 0; transform: translateX(-250px);}
+    100% { opacity: 1; transform: translateX(0px);}
+  }

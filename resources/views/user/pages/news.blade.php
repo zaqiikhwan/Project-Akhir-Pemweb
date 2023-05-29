@@ -1,6 +1,6 @@
 @extends('user.layouts.main')
 
-@section('title', 'Homepage')
+@section('title', 'News')
 
 @section('content')
     <header 
