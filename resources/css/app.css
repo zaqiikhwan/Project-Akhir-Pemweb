@@ -43,21 +43,21 @@
 
 @layer components{
     .btn-primary{
-        @apply bg-primary-500 text-white px-4 py-2 font-bold cursor-pointer
+        @apply bg-primary-500 text-white px-4 py-2 font-bold cursor-pointer rounded hover:shadow-lg
     }
     .btn-primary:disabled{
-        @apply bg-white text-gray-300 cursor-default
+        @apply bg-gray-300 text-gray-100 cursor-default rounded
     }
 
     .btn-secondary{
-        @apply bg-white text-primary-500 px-4 py-2 font-bold
+        @apply bg-white text-primary-500 px-4 py-2 font-bold rounded hover:shadow-lg
     }
     .btn-secondary:disabled{
-        @apply bg-gray-300 text-white
+        @apply bg-gray-300 text-white rounded
     }
     
     .card{
-        @apply bg-gray-200 border-[1px] border-primary-500
+        @apply bg-gray-100 border-primary-500 rounded-md hover:shadow-lg
     }
 
     /* =====================Admin====================== */

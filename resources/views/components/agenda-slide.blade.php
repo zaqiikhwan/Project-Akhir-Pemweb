@@ -1,6 +1,6 @@
 <main class="bg-primary-500 my-[120px] flex">
     <section class="basis-1/12 flex items-center">
-        <img src="{{ asset('images/logo-side.svg') }}" alt="side logo">
+        <img src="{{ asset('images/logo-side-1.svg') }}" alt="side logo">
     </section>
     <section class="basis-6/12 relative p-12 text-white pb-24">
         <h1 class="text-3xl font-bold mb-4" id="agenda-title">Lorem Ipsum Dolor </h1>

@@ -4,13 +4,13 @@
 
 @section('content')
     <header 
-        class="w-full container mx-auto py-16 bg-no-repeat bg-cover bg-top mb-8"
-        style="background-image: url({{asset("images/news-bg.jpg")}})">
+        class="w-full container mx-auto py-16 bg-no-repeat bg-cover bg-top mb-8 rounded-md"
+        style="background-image: url({{asset("images/news-bg-1.jpg")}})">
         <h1 class="text-white font-bold text-center">Berita</h1>
     </header>
     <section class="container mx-auto">
-        <form class="float-right border-primary-500 border-2 flex items-center gap-2 mb-8">
-            <button class="btn-primary inline-block h-full">
+        <form class="float-right border-primary-500 border-2 flex items-center gap-2 mb-8 rounded-lg">
+            <button class="btn-primary rounded-none rounded-l-sm inline-block h-full hover:shadow-sm">
                 <span class="iconify" data-icon="material-symbols:search"></span>
             </button>
             <input type="text" name="key" placeholder="Apa berita yang anda cari?" class="w-64 outline-none">

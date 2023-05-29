@@ -8,11 +8,11 @@ export default {
     extend: {
       colors : {
         primary : {
-          500 : "#EF7D00"
+          500 : "#019934"
         }
       },
       fontFamily : {
-        jost : ['Jost', 'sans-serif'],
+        jost : ['Plus Jakarta Sans', 'sans-serif'],
         poppins : ['Poppins', 'sans-serif']
       }
     },
