@@ -12,7 +12,9 @@ class Agenda extends Model
 
     protected $fillable = [
         'ulid',
-        'image',
-        'title'
+        'images',
+        'title',
+        'content',
+        'date'
     ];
 }
