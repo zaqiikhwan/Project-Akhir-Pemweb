@@ -26,17 +26,23 @@ class AgendaController extends Controller
     public function store(Request $request): RedirectResponse {
         $request->validate([
             'title' => 'required',
-            'image' => 'file|image|mimes:jpeg,png,jpg,gif,svg'
+            ['images' => 'file|image|mimes:jpeg,png,jpg,gif,svg'],
+            'content' => 'required',
+            'date' => 'required'
         ]);
 
         $input = $request->all();
-        
-        if($image = $request->file('image')) {
-            $imagePath = 'data_file/';
-            $agendaImage = time()."_".$image->getClientOriginalName();
-            $image->move($imagePath, $agendaImage);
-            $input['image'] = $agendaImage;
+        $images = array();
+        if($files = $request->file('images')) {
+            foreach($files as $file){
+                $imagePath = 'data_file/';
+                $productImage = time()."_".$file->getClientOriginalName();
+                $file->move($imagePath, $productImage);
+                $images[] = $productImage;
+            }
         }
+
+        $input['images'] = implode("|", $images);
 
         Agenda::create($input);
         return redirect()->route('agenda.index')->with('success', 'Agenda berhasil dibuat');
@@ -59,14 +65,31 @@ class AgendaController extends Controller
         ]);
 
         $input = $request->all();
-        
-        if($image = $request->file('image')) {
-            $imagePath = 'data_file/';
-            $agendaImage = time()."_".$image->getClientOriginalName();
-            $image->move($imagePath, $agendaImage);
-            $input['image'] = $agendaImage;
-        } else {
-            unset($input['image']);
+    
+        if($request->hasFile('images')) {
+            $images = array();
+            $files = $request->file('images');
+    
+            // Hapus gambar lama yang akan dihapus
+            if($request->has('deleted_images')) {
+                $deletedImages = $request->input('deleted_images');
+                $deletedImages = explode("|", $deletedImages);
+                foreach($deletedImages as $deletedImage) {
+                    $imagePath = public_path('data_file/') . $deletedImage;
+                    if(file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
+                }
+            }
+    
+            // Upload dan simpan gambar baru
+            foreach($files as $file) {
+                $imagePath = 'data_file/';
+                $productImage = time()."_".$file->getClientOriginalName();
+                $file->move($imagePath, $productImage);
+                $images[] = $productImage;
+            }
+            $input['images'] = implode("|", $images);
         }
 
         $agenda->update($input);

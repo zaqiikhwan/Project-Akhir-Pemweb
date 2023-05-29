@@ -23,13 +23,21 @@
             <th>No</th>
             <th>Image</th>
             <th>Title</th>
+            <th>Content</th>
+            <th>Date</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($agendas as $agenda)
         <tr>
             <td>{{ ++$i }}</td>
-            <td><img src="/data_file/{{ $agenda->image }}" width="100px"></td>
+            <td>
+                @foreach(explode('|', $agenda->images) as $image)
+                <img src="{{ asset('/data_file/'.$image) }}" width="100px" class="mb-3 mt-3">
+                @endforeach
+            </td>
             <td>{{ $agenda->title }}</td>
+            <td>{{ $agenda->content }}</td>
+            <td>{{ $agenda->date }}</td>
             <td>
                 <form action="{{ route('agenda.destroy',$agenda->id) }}" method="POST">
      
