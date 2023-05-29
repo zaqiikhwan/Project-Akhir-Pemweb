@@ -19,7 +19,6 @@ class PaymentsController extends Controller {
         $transaction = array(
             "payment_type" => "gopay",
             "transaction_details" => [
-                "gross_amount" => ['item_details'][0]['price'] * ['item_details'][0]['quantity'],
                 "order_id" => Str::uuid()->toString(),
             ],
             "customer_details" => [
@@ -31,8 +30,8 @@ class PaymentsController extends Controller {
             "item_details" => array(
                 [
                     "id" => 'order-id: ' . Str::random(15) . time(),
-                    "price" => 5000,
-                    "quantity" => 1,
+                    "price" => 7000,
+                    "quantity" => $req->input('quantity'),
                     "name" => "Panci Miako"
                 ],
             ),
