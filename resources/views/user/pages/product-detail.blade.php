@@ -20,8 +20,8 @@
                 <span class="text-xl block mb-4">Rp 00.000</span>
                 <p>Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor</p>
                 <section>
-                    <input type="number">
-                    <button class="btn-primary">Beli</button>
+                    <input type="number" id="amount-input">
+                    <button class="btn-primary" id="btn-buy" onclick="openModal()">Beli</button>
                 </section>
             </section>
         </div>
@@ -52,4 +52,5 @@
             </span>
         @endforeach
     </section>
+    <x-payment-modal/>
 @endsection
