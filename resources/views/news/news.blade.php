@@ -23,12 +23,7 @@
 					@endforeach
 				</div>
 				@endif
-
-<<<<<<<< HEAD:resources/views/news/news.blade.php
-				<form action="/news" method="POST" enctype="multipart/form-data">
-========
 				<form method="POST" enctype="multipart/form-data">
->>>>>>>> 5fe22667e4b11255fe6485ac705aaab6ca95f1b7:resources/views/admin/news/news.blade.php
 					{{ csrf_field() }}
 
 					<div class="form-group">
@@ -65,15 +60,9 @@
 							<td>{{$g->title}}</td>
                             <td>{{$g->content}}</td>
 							<td>
-<<<<<<<< HEAD:resources/views/news/news.blade.php
-                                <a class="btn btn-danger" href="/news/hapus/{{ $g->id }}">Hapus</a>
-                                <a class="btn btn-danger" href="/news/edit/{{ $g->id }}">Edit</a>
-========
                                 <a class="btn btn-danger" href="/admin/news/hapus/{{ $g->id }}">Hapus</a>
                                 <a class="btn btn-danger" href="/admin/news/edit/{{ $g->id }}">Edit</a>
->>>>>>>> 5fe22667e4b11255fe6485ac705aaab6ca95f1b7:resources/views/admin/news/news.blade.php
                             </td>
-							{{-- <td></td> --}}
 						</tr>
 						@endforeach
 					</tbody>
