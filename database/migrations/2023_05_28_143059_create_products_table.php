@@ -15,9 +15,9 @@ return new class extends Migration
             $table->ulid('id')->primary();
             $table->string('product_name')->nullable(false)->unique();
             $table->text('description')->nullable(false);
-            $table->string('image')->nullable(false);
+            $table->string('images')->nullable(false);
             $table->integer('product_stock')->nullable(false);
-            $table->decimal('price', 10, 2)->default(0.00);
+            $table->unsignedDecimal('price', 10, 2)->default(0.00);
             $table->softDeletes();
             $table->timestamps();
         });

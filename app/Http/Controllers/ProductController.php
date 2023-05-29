@@ -27,20 +27,23 @@ class ProductController extends Controller
         $request->validate([
             'product_name' => 'required',
             'description' => 'required',
-            'image' => 'file|image|mimes:jpeg,png,jpg,gif,svg',
+            ['images' => 'file|image|mimes:jpeg,png,jpg,gif,svg'],
             'product_stock' => 'required',
             'price' => 'required'
         ]);
 
         $input = $request->all();
-
-        if($image = $request->file('image')) {
-            $imagePath = 'foto_produk/';
-            $productImage = time()."_".$image->getClientOriginalName();
-            $image->move($imagePath, $productImage);
-            $input['image'] = $productImage;
+        $images = array();
+        if($files = $request->file('images')) {
+            foreach($files as $file){
+                $imagePath = 'foto_produk/';
+                $productImage = time()."_".$file->getClientOriginalName();
+                $file->move($imagePath, $productImage);
+                $images[] = $productImage;
+            }
         }
 
+        $input['images'] = implode("|", $images);
         Product::create($input);
         return redirect()->route('product.index')->with('success', 'Produk berhasil dibuat');
     }
@@ -62,14 +65,31 @@ class ProductController extends Controller
         ]);
 
         $input = $request->all();
-        
-        if($image = $request->file('image')) {
-            $imagePath = 'foto_produk/';
-            $productImage = time()."_".$image->getClientOriginalName();
-            $image->move($imagePath, $productImage);
-            $input['image'] = $productImage;
-        } else {
-            unset($input['image']);
+    
+        if($request->hasFile('images')) {
+            $images = array();
+            $files = $request->file('images');
+    
+            // Hapus gambar lama yang akan dihapus
+            if($request->has('deleted_images')) {
+                $deletedImages = $request->input('deleted_images');
+                $deletedImages = explode("|", $deletedImages);
+                foreach($deletedImages as $deletedImage) {
+                    $imagePath = public_path('foto_produk/') . $deletedImage;
+                    if(file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
+                }
+            }
+    
+            // Upload dan simpan gambar baru
+            foreach($files as $file) {
+                $imagePath = 'foto_produk/';
+                $productImage = time()."_".$file->getClientOriginalName();
+                $file->move($imagePath, $productImage);
+                $images[] = $productImage;
+            }
+            $input['images'] = implode("|", $images);
         }
         
         $product->update($input);

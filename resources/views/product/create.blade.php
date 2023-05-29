@@ -36,7 +36,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
             <div class="form-group">
                 <strong>Image:</strong>
-                <input type="file" name="image" class="form-control" placeholder="Image">
+                <input type="file" name="images[]" class="form-control" placeholder="Image" multiple>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 mb-3">

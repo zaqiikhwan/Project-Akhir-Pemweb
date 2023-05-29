@@ -37,9 +37,11 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Image:</strong>
-                    <input type="file" name="image" class="form-control" placeholder="Image">
+                    <input type="file" name="images[]" class="form-control" placeholder="Image" multiple>
                     <br>
-                    <img src="/foto_produk/{{ $product->image }}" width="300px" class="mt-3">
+                    @foreach(explode('|', $product->images) as $image)
+                        <img src="{{ asset('/foto_produk/'.$image) }}" width="100px" class="mt-3 mb-3">
+                    @endforeach
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

@@ -32,10 +32,14 @@
     <tr>
         <td>{{ ++$i }}</td>
         <td>{{ $product->product_name }}</td>
-        <td><img src="/foto_produk/{{ $product->image }}" width="100px"></td>
+        <td>
+            @foreach(explode('|', $product->images) as $image)
+            <img src="{{ asset('/foto_produk/'.$image) }}" width="100px" class="mt-3 mb-3">
+            @endforeach
+        </td>
         <td>{{ $product->description }}</td>
         <td>{{ $product->product_stock }}</td>
-        <td>Rp {{ $product->price }}</td>
+        <td>{{ 'Rp ' . number_format($product->price, 2, ',', '.') }}</td>
         <td>
             <form action="{{ route('products.destroy',$product->id) }}" method="POST">
  

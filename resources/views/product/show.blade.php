@@ -23,7 +23,9 @@
             <div class="form-group">
                 <strong>Image:</strong>
                 <br>
-                <img src="/foto_produk/{{ $product->image }}" width="200px">
+                @foreach(explode('|', $product->images) as $image)
+                    <img src="{{ asset('/foto_produk/'.$image) }}" width="100px" class="mt-3 mb-3">
+                @endforeach
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -41,7 +43,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Price:</strong>
-                Rp {{$product->price }}
+                {{ 'Rp ' . number_format($product->price, 2, ',', '.') }}
             </div>
         </div>
     </div>

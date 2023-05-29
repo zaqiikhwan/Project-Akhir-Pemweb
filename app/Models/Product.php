@@ -14,7 +14,7 @@ class Product extends Model
         'ulid',
         'product_name',
         'description',
-        'image',
+        'images',
         'product_stock',
         'price'
     ];
