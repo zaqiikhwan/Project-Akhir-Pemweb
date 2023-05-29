@@ -25,13 +25,17 @@ use Illuminate\Support\Facades\Route;
 
 // Homepage Route
 Route::controller(Homepage::class)->group(function(){
-    Route::get('/','home');
-    Route::get('/profile/{params}','profile');
-    Route::get('/news','news');
-    Route::get('/news/{id}','newsdetail');
-    Route::get('/product','product');
-    Route::get('/product/{id}','productdetail');
-    Route::get('/payment/{id}','payment');
+    Route::get('/','home')->name('Beranda');
+    Route::get('/profile/{params}','profile')->name('Profil');
+    Route::name('Berita')->group(function(){
+        Route::get('/news','news');
+        Route::get('/news/{id}','newsdetail');
+    });
+    Route::name('product')->group(function(){
+        Route::get('/product','product');
+        Route::get('/product/{id}','productdetail');
+        Route::get('/payment/{id}','payment');
+    });
 });
 
 Route::prefix('admin')->group(function(){
