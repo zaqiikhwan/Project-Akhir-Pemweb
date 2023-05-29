@@ -21,8 +21,8 @@
                 <p class="mb-6">Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor</p>
                 <p>Jumlah Produk:</p>
                 <section class="flex gap-4">
-                    <input type="number" min="1" value="1" class="w-1/3 border-2 border-primary-500 rounded-md text-center font-bold">
-                    <button class="btn-primary w-1/5">Beli</button>
+                    <input type="number" min="1" value="1" class="w-1/3 border-2 border-primary-500 rounded-md text-center font-bold" id="amount-input">
+                    <button class="btn-primary w-1/5" id="btn-buy" onclick="openModal()">Beli</button>
                 </section>
             </section>
         </div>
@@ -53,4 +53,5 @@
             </span>
         @endforeach
     </section>
+    <x-payment-modal/>
 @endsection

@@ -77,6 +77,13 @@
     .admin .sidebar a.active{
         @apply bg-primary-500 text-white
     }
+
+    .payment-modal{
+        @apply w-full h-screen bg-gray-500 z-30 fixed top-0 bg-opacity-50 backdrop-blur-sm items-center justify-center;
+    }
+    .payment-modal .modal-content{
+        animation: fadeIn 0.3s;
+    }
 }
 
 @layer utilities{
@@ -84,4 +91,9 @@
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: white;
       }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px);}
+  100% { opacity: 1; transform: translateY(0px);}
 }
