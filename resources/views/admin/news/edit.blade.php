@@ -24,23 +24,26 @@
 					@endforeach
 				</div>
 				@endif
-
 				<form action="/admin/news/update" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
                     @method('PATCH')
                     <input type="hidden" name="id" value="{{ $news->id }}">
 					<div class="form-group">
-						<b>File Gambar</b><br/>
+						<strong>File Gambar</strong><br/>
 						<input type="file" name="file">
 					</div>
 					<div class="form-group">
-						<b>Title</b>
+						<strong>Judul</strong>
 						<textarea class="form-control" name="title">{{ $news->title }}</textarea>
 					</div>
 					<div class="form-group">
-						<b>Content</b>
+						<strong>Konten</strong>
 						<textarea class="form-control" name="content">{{ $news->content }}</textarea>
 					</div>
+                    <div class="form-group">
+                        <strong>Tanggal</strong>
+                        <input type="date" name="date" class="form-control" placeholder="Date" value={{ $news->date }}>
+                    </div>
 
 					<input type="submit" value="Update" class="btn btn-primary">
 				</form>
@@ -50,15 +53,24 @@
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th width="1%">File</th>
-							<th>Title</th>
-							<th width="1%">OPSI</th>
+							<th width="1%">Gambar</th>
+							<th>Judul</th>
+                            <th>Konten</th>
+                            <th>Tanggal</th>
+							<th width="1%">Opsi</th>
 						</tr>
 					</thead>
 					<tbody>
-                        <td><img width="150px" src="{{ url('/data_file/'.$news->image) }}"></td>
-                        <td>{{$news->title}}</td>
-                        <td>{{ $news->content }}</td>
+						<tr>
+							<td><img width="150px" src="{{ url('/data_file/'.$news->image) }}"></td>
+							<td>{{$news->title}}</td>
+                            <td>{{$news->content}}</td>
+                            <td>{{$news->date->format('y-m-H')}}</td>
+							<td>
+                                <a class="btn btn-danger" href="/admin/news/hapus/{{ $news->id }}">Hapus</a>
+                                <a class="btn btn-" href="/admin/news/edit/{{ $news->id }}">Edit</a>
+                            </td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

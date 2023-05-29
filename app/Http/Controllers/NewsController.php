@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\View\View;
 
 class NewsController extends Controller
 {
     //
-    public function upload(){
+    public function upload(): View|string {
         $news = News::all();
 		return view('admin.news.news', ['news' => $news]);
 	}
@@ -25,7 +26,7 @@ class NewsController extends Controller
 		$file = $request->file('file');
         $title = $request->input('title');
         $content = $request->input('content');
-        $date = time();
+        $date = $request->input('date');
 
         // isi dengan nama folder tempat kemana file diupload
         // untuk menghubungkan dengan local storage perlu menjalankan command
@@ -67,6 +68,7 @@ class NewsController extends Controller
             News::where('id', $request->id)->update([
                 'title' => $request->input('title'),
                 'content' => $request->input('content'),
+                'date' => $request->input('date'),
             ]);
         } else {
             File::delete('data_file/'.$news->image);
@@ -78,11 +80,11 @@ class NewsController extends Controller
             News::where('id', $request->id)->update([
                 'title' => $request->input('title'),
                 'content' => $request->input('content'),
+                'date' => $request->input('date'),
                 'image' => $nama_file,
-                // 'date' => time(),
             ]);
         }
 
-        return redirect()->back();
+        return redirect()->route('news.index');
     }
 }
