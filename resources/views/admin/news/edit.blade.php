@@ -8,7 +8,7 @@
 
 @extends('admin.layouts.main')
 
-@section('content')	
+@section('content')
 <body>
 	<div class="row">
 		<div class="container">

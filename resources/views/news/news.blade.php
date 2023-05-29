@@ -63,7 +63,6 @@
                                 <a class="btn btn-danger" href="/admin/news/hapus/{{ $g->id }}">Hapus</a>
                                 <a class="btn btn-danger" href="/admin/news/edit/{{ $g->id }}">Edit</a>
                             </td>
-							{{-- <td></td> --}}
 						</tr>
 						@endforeach
 					</tbody>
