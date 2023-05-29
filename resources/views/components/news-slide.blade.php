@@ -1,5 +1,5 @@
 <h2 class="font-bold text-primary-500 mb-4">Berita</h2>
-            <section class="flex card h-5/6">
+            <section class="flex card h-5/6 rounded-md shadow-lg">
                 <img 
                     src="{{ asset('https://placekitten.com/1200/1200') }}" 
                     alt="image-news"
