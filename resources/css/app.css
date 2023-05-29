@@ -86,6 +86,7 @@
     }
     .payment-modal .modal-content{
         animation: fadeInFromBottom 0.3s;
+    }
 
     .pray-schedule{
         @apply flex flex-col items-center bg-white text-primary-500 p-8 justify-center basis-1/5 rounded-md 
