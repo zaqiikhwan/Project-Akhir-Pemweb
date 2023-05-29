@@ -37,13 +37,13 @@
     {{-- Agenda --}}
     <x-agenda-slide/>
     {{-- Lokasi --}}
-    <main class="container mx-auto my-[120px] flex flex-col items-center">
+    <main class="container mx-auto my-[120px] flex flex-col">
         <h2 class="text-primary-500 font-bold mb-4">Lokasi</h2>
-        <a href="https://www.google.com/maps/place/Palengaan+Laok,+Palengaan,+Pamekasan+Regency,+East+Java/@-7.058905,113.3957703,14z/data=!3m1!4b1!4m6!3m5!1s0x2dd9d36fb7039871:0x64ad246dc2cb5e28!8m2!3d-7.0561494!4d113.4121233!16s%2Fg%2F12lng_4nd" target="blank" class="w-1/2">
+        <a href="https://www.google.com/maps/place/Palengaan+Laok,+Palengaan,+Pamekasan+Regency,+East+Java/@-7.058905,113.3957703,14z/data=!3m1!4b1!4m6!3m5!1s0x2dd9d36fb7039871:0x64ad246dc2cb5e28!8m2!3d-7.0561494!4d113.4121233!16s%2Fg%2F12lng_4nd" target="blank">
             <img 
                 src="{{ asset('images/map.png') }}" 
                 alt="maps"
-                class="w-full rounded-md mx-auto fadeInFromRight">
+                class="w-full rounded-md mx-auto fadeInFromRight aspect-[3/1] object-cover hover:shadow-lg transition-all">
         </a>
     </main>
 @endsection

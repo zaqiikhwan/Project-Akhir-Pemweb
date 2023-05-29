@@ -61,6 +61,17 @@
             checkButton();
         }
     }
+
+    setInterval(() => {
+        if(index < max - 1){
+            index +=1;
+        } else {
+            index = 0;
+        }
+
+        checkButton();
+        setSlide(index);    
+    }, 3000);
     
     checkButton();
     setSlide(index);
