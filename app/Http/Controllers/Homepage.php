@@ -35,4 +35,17 @@ class Homepage extends Controller
             ["news"=>$news,
             "other"=>$other]);
     }
+
+    
+    public function product(){
+        return view('user.pages.product');
+    }
+
+    public function productdetail($id){
+        return view('user.pages.product-detail');
+    }
+
+    public function payment($id){
+        return view('user.pages.payment');
+    }
 }
