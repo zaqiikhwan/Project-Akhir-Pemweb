@@ -47,14 +47,14 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
             <div class="form-group">
-                <strong>Stock:</strong>
-                <input type="number" name="product_stock" class="form-control" placeholder="Stock">
+                <strong>Stok:</strong>
+                <input type="number" min="1" name="product_stock" class="form-control" placeholder="Stock">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
             <div class="form-group">
                 <strong>Price:</strong>
-                <input type="number" name="price" class="form-control" placeholder="Price">
+                <input type="number" min="0" name="price" class="form-control" placeholder="Price">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
