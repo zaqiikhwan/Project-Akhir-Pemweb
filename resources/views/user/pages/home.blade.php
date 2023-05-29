@@ -19,7 +19,7 @@
     </main>
     <x-pray-schedule/>
     {{-- News --}}
-    <main class="flex container mx-auto my-[120px] gap-12">
+    <main class="flex container mx-auto my-[140px] gap-12">
         <div class="basis-2/3">
             <x-news-slide/>
         </div>
