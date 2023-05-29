@@ -1,6 +1,6 @@
 <footer class="bg-primary-500">
     <div class="container mx-auto">
-        <section class="flex gap-14 justify-center items-center border-b-2 border-white py-8">
+        <section class="flex gap-20 justify-center items-center border-b-2 border-white py-8">
             <img src="{{asset("images/logo-white.svg")}}" alt="whitelogo">
             <a href="">
                 <span class="iconify text-white h-14 w-auto" data-icon="ic:baseline-mail"></span>

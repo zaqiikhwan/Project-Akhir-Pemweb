@@ -5,6 +5,9 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
+@extends('admin.layouts.main')
+
+@section('content')
 <body>
 	<div class="row">
 		<div class="container">
@@ -20,8 +23,7 @@
 					@endforeach
 				</div>
 				@endif
-
-				<form action="/news" method="POST" enctype="multipart/form-data">
+				<form method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
 
 					<div class="form-group">
@@ -58,10 +60,9 @@
 							<td>{{$g->title}}</td>
                             <td>{{$g->content}}</td>
 							<td>
-                                <a class="btn btn-danger" href="/news/hapus/{{ $g->id }}">Hapus</a>
-                                <a class="btn btn-danger" href="/news/edit/{{ $g->id }}">Edit</a>
+                                <a class="btn btn-danger" href="/admin/news/hapus/{{ $g->id }}">Hapus</a>
+                                <a class="btn btn-danger" href="/admin/news/edit/{{ $g->id }}">Edit</a>
                             </td>
-							{{-- <td></td> --}}
 						</tr>
 						@endforeach
 					</tbody>
@@ -70,4 +71,5 @@
 		</div>
 	</div>
 </body>
+@endsection
 </html>

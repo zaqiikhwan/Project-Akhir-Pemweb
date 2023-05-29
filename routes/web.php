@@ -5,6 +5,8 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Profile;
+use App\Http\Controllers\Homepage;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Models\News;
@@ -21,21 +23,45 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.pages.home');
+// Homepage Route
+Route::controller(Homepage::class)->group(function(){
+    Route::get('/','home');
+    Route::get('/profile/{params}','profile');
+    Route::get('/news','news');
+    Route::get('/news/{id}','newsdetail');
+    Route::get('/product','product');
+    Route::get('/product/{id}','productdetail');
+    Route::get('/payment/{id}','payment');
 });
 
-Route::get('/profile/{params}', [Profile::class, 'view']);
+Route::prefix('admin')->group(function(){
+    Route::middleware(['auth'])->group(function(){
+        // News Route
+        Route::name('news')->group(function(){
+            Route::controller(NewsController::class)->group(function(){
+                Route::get('/news', 'upload');
+                Route::post('/news', 'proses_upload');
+                Route::get('/news/hapus/{id}', 'delete');
+                Route::get('/news/edit/{id}',  'editNews');
+                Route::patch('/news/update', 'edit');
+            });
+        });
 
-Route::get('/news', [NewsController::class, 'upload'])->name('upload');
-Route::post('/news', [NewsController::class, 'proses_upload'])->middleware('auth');
-Route::get('/news/hapus/{id}', [NewsController::class, 'delete'])->middleware('auth');
-Route::get('/news/edit/{id}', [NewsController::class, 'editNews'])->middleware('auth');
-Route::patch('/news/update', [NewsController::class, 'edit'])->middleware('auth');
+        // Agenda Route
+        Route::name('agenda')->group(function(){
+            Route::controller(AgendaController::class) -> group(function(){
+                Route::get('/agenda', 'index')->name('agenda.index');
+            });
+        });
+    });
+});
+
+Route::get('/payment/test', [PaymentsController::class, 'qrisTransferCharge']);
 
 Route::get('/admin', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
+Route::resource('/agenda',AgendaController::class);
 Route::get('/admin/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 

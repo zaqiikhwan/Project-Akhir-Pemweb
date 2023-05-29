@@ -11,7 +11,10 @@
         @apply bg-white z-10
     }
     nav ul{
-        @apply flex items-center gap-10 font-semibold
+        @apply flex items-center gap-10
+    }
+    nav ul li {
+        @apply hover:font-semibold
     }
 
     h1{
@@ -21,7 +24,9 @@
     h2{
         @apply text-4xl
     }
-
+    p {
+        @apply text-lg
+    }
     ol{
         @apply list-decimal
     }
@@ -29,27 +34,33 @@
         @apply ms-4
     }
 
+    pre{
+        @apply overflow-auto bg-transparent whitespace-pre-wrap text-justify font-jost text-lg
+    }
     /* =====================Admin====================== */
 
+    .admin *{
+        @apply font-poppins
+    }
 }
 
 @layer components{
     .btn-primary{
-        @apply bg-primary-500 text-white px-4 py-2 font-bold
+        @apply bg-primary-500 text-white px-4 py-2 font-bold cursor-pointer rounded hover:shadow-lg
     }
     .btn-primary:disabled{
-        @apply bg-white text-gray-300
+        @apply bg-gray-300 text-gray-100 cursor-default rounded
     }
 
     .btn-secondary{
-        @apply bg-white text-primary-500 px-4 py-2 font-bold
+        @apply bg-white text-primary-500 px-4 py-2 font-bold rounded hover:shadow-lg
     }
     .btn-secondary:disabled{
-        @apply bg-gray-300 text-white
+        @apply bg-gray-300 text-white rounded
     }
     
     .card{
-        @apply bg-gray-200 border-[1px] border-primary-500
+        @apply bg-gray-100 border-primary-500 rounded-md hover:shadow-lg
     }
 
     /* =====================Admin====================== */
@@ -58,13 +69,23 @@
         @apply border-2 border-primary-500 rounded-lg p-1 w-full
     }
     .admin .sidebar a{
-        @apply p-3 rounded-md text-gray-800 text-xl font-medium mb-1 transition-all
+        @apply p-3 rounded-md text-sky-950 text-base font-medium mb-1 transition-all flex gap-2 items-center no-underline
+    }
+    .admin .sidebar a .iconify{
+        @apply scale-125
     }
     .admin .sidebar a:hover{
         @apply bg-primary-500 bg-opacity-50 text-white
     }
     .admin .sidebar a.active{
         @apply bg-primary-500 text-white
+    }
+
+    .payment-modal{
+        @apply w-full h-screen bg-gray-500 z-30 fixed top-0 bg-opacity-50 backdrop-blur-sm items-center justify-center;
+    }
+    .payment-modal .modal-content{
+        animation: fadeIn 0.3s;
     }
 }
 
@@ -73,4 +94,9 @@
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: white;
       }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px);}
+  100% { opacity: 1; transform: translateY(0px);}
 }
