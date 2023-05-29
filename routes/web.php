@@ -72,4 +72,3 @@ Route::resource('products', ProductController::class)->middleware('auth');
 Route::get('products', [ProductController::class, 'index'])->name('product.index')->middleware('auth');
 
 
-

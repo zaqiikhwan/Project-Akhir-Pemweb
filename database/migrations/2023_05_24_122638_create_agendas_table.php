@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->string('title', 255)->nullable(false);
-            $table->string('image')->nullable(false);
+            $table->string('images')->nullable(false);
+            $table->text('content')->nullable(false);
+            $table->date('date')->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });
