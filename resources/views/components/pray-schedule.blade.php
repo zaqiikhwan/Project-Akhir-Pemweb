@@ -1,5 +1,5 @@
 <main class="bg-primary-500">
-    <div class="container mx-auto py-12 text-white">
+    <div class="container mx-auto py-16 text-white">
         <h2 class="font-bold mb-2">Jadwal Sholat Desa Palengaan Laok</h2>
         <p>{{$date}}</p>
         <section class="mt-8 flex gap-12">
