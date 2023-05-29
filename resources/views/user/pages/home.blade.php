@@ -8,7 +8,7 @@
         style="background-image: url({{asset("images/background.jpg")}})">
         <div class="flex items-center container mx-auto justify-between">
             <section>
-                <h1 class="font-bold mb-6 text-transparent text-stroke">Palengaan Laok</h1>
+                <h1 class="font-bold mb-6 text-transparent text-stroke text-8xl">Palengaan Laok</h1>
                 <h2 class="text-white">Bersahabat Kepada Masyarakat</h2>
             </section>
             <img 
@@ -25,14 +25,13 @@
         </div>
         <div class="basis-1/3">
             <h2 class="font-bold text-primary-500 mb-4">Pengumuman</h2>
-            <section class="bg-primary-500 h-5/6 p-7 flex flex-col">
-                <ul class="flex flex-col gap-2 text-primary-500 text-xl font-medium">
-                    <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
-                    <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
-                    <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
-                    <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
-                    <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
-                    <li class="card p-2">Lorem Ipsum Dolor Sit Amet</li>
+            <section class="bg-primary-500 h-5/6 p-7 flex flex-col rounded-md">
+                <ul class="flex flex-col gap-4 text-primary-500 text-xl font-medium rounded">
+                    <li class="card py-3 px-4">Lorem Ipsum Dolor Sit Amet</li>
+                    <li class="card py-3 px-4">Lorem Ipsum Dolor Sit Amet</li>
+                    <li class="card py-3 px-4">Lorem Ipsum Dolor Sit Amet</li>
+                    <li class="card py-3 px-4">Lorem Ipsum Dolor Sit Amet</li>
+                    <li class="card py-3 px-4">Lorem Ipsum Dolor Sit Amet</li>
                 </ul>
                 <button class="card px-4 py-2 text-primary-500 font-bold self-end mt-7">Selengkapnya</button>
             </section>
@@ -47,7 +46,7 @@
             <img 
                 src="{{ asset('images/map.png') }}" 
                 alt="maps"
-                class="w-full">
+                class="w-full rounded-md">
         </a>
     </main>
 @endsection

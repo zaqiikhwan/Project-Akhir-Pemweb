@@ -9,7 +9,7 @@ class CoreApi extends Controller
     public static function charge($params)
     {
         $payloads = array(
-            'payment_type' => 'qris'
+            'payment_type' => 'gopay',
         );
 
         if (array_key_exists('item_details', $params)) {

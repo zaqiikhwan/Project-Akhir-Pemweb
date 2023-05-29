@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 
 class Config extends Controller
 {
-    // public static $serverKey = "SB-Mid-server-kKNEazyRyGjp1z_hnheYLDRm";
     public static $serverKey = "SB-Mid-server-vJKgddtzHmynHGsq2DPfx0Pe";
     // public static $serverKey = "Mid-server-6HjHBd8x56PNCbPjxKGwOmah";
     /**
@@ -55,7 +54,8 @@ class Config extends Controller
     public static function getBaseUrl()
     {
         return Config::$isProduction ?
-        Config::PRODUCTION_BASE_URL : Config::SANDBOX_BASE_URL;
+        Config::PRODUCTION_BASE_URL :
+        Config::SANDBOX_BASE_URL;
     }
 
     /**

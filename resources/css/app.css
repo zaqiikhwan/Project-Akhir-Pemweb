@@ -24,6 +24,9 @@
     h2{
         @apply text-4xl
     }
+    p {
+        @apply text-lg
+    }
     ol{
         @apply list-decimal
     }
@@ -32,7 +35,7 @@
     }
 
     pre{
-        @apply overflow-auto bg-transparent whitespace-pre-wrap text-justify font-jost
+        @apply overflow-auto bg-transparent whitespace-pre-wrap text-justify font-jost text-lg
     }
     /* =====================Admin====================== */
 
@@ -43,21 +46,21 @@
 
 @layer components{
     .btn-primary{
-        @apply bg-primary-500 text-white px-4 py-2 font-bold cursor-pointer
+        @apply bg-primary-500 text-white px-4 py-2 font-bold cursor-pointer rounded hover:shadow-lg
     }
     .btn-primary:disabled{
-        @apply bg-white text-gray-300 cursor-default
+        @apply bg-gray-300 text-gray-100 cursor-default rounded
     }
 
     .btn-secondary{
-        @apply bg-white text-primary-500 px-4 py-2 font-bold
+        @apply bg-white text-primary-500 px-4 py-2 font-bold rounded hover:shadow-lg
     }
     .btn-secondary:disabled{
-        @apply bg-gray-300 text-white
+        @apply bg-gray-300 text-white rounded
     }
     
     .card{
-        @apply bg-gray-200 border-[1px] border-primary-500
+        @apply bg-gray-100 border-primary-500 rounded-md hover:shadow-lg
     }
 
     /* =====================Admin====================== */
@@ -77,6 +80,13 @@
     .admin .sidebar a.active{
         @apply bg-primary-500 text-white
     }
+
+    .payment-modal{
+        @apply w-full h-screen bg-gray-500 z-30 fixed top-0 bg-opacity-50 backdrop-blur-sm items-center justify-center;
+    }
+    .payment-modal .modal-content{
+        animation: fadeIn 0.3s;
+    }
 }
 
 @layer utilities{
@@ -84,4 +94,9 @@
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: white;
       }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px);}
+  100% { opacity: 1; transform: translateY(0px);}
 }
