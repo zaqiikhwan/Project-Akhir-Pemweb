@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Agenda;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class AgendaController extends Controller
@@ -65,11 +64,11 @@ class AgendaController extends Controller
         ]);
 
         $input = $request->all();
-    
+
         if($request->hasFile('images')) {
             $images = array();
             $files = $request->file('images');
-    
+
             // Hapus gambar lama yang akan dihapus
             if($request->has('deleted_images')) {
                 $deletedImages = $request->input('deleted_images');
@@ -81,7 +80,6 @@ class AgendaController extends Controller
                     }
                 }
             }
-    
             // Upload dan simpan gambar baru
             foreach($files as $file) {
                 $imagePath = 'data_file/';

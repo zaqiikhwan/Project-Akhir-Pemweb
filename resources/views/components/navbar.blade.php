@@ -5,12 +5,12 @@
         </a>
         <ul>
             @foreach ($links as $link)
-            <li class="@if($link == $active) text-primary-500 font-semibold @endif">
-                <a href="/">{{$link}}</a>
+            <li class="@if($link["display"] == $active) text-primary-500 font-bold underline underline-offset-[12px] @endif">
+                <a href="/{{$link["link"]}}">{{$link["display"]}}</a>
             </li>
             @endforeach
             <li>
-                <button class="btn-primary">Produk UMKM</button>
+                <a href="product" class="btn-primary @if($active == "product") shadow-lg @endif">Produk UMKM</a>
             </li>
         </ul>
     </div>

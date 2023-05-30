@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Homepage;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +22,17 @@ use Illuminate\Support\Facades\Route;
 
 // Homepage Route
 Route::controller(Homepage::class)->group(function(){
-    Route::get('/','home');
-    Route::get('/profile/{params}','profile');
-    Route::get('/news','news');
-    Route::get('/news/{id}','newsdetail');
+    Route::get('/','home')->name('Beranda');
+    Route::get('/profile/{params}','profile')->name('Profil');
+    Route::name('Berita')->group(function(){
+        Route::get('/news','news');
+        Route::get('/news/{id}','newsdetail');
+    });
+    Route::name('product')->group(function(){
+        Route::get('/product','product');
+        Route::get('/product/{id}','productdetail');
+        Route::get('/payment/{id}','payment');
+    });
 });
 
 Route::prefix('admin')->group(function(){
@@ -51,7 +57,9 @@ Route::prefix('admin')->group(function(){
     });
 });
 
-Route::get('/payment/test', [PaymentsController::class, 'qrisTransferCharge']);
+// Route::get('admin/news', [NewsController::class, 'upload'])->name('news.index');
+
+Route::get('api/payment/test', [PaymentsController::class, 'qrisTransferCharge']);
 
 Route::get('/admin', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
@@ -60,5 +68,8 @@ Route::resource('/agenda',AgendaController::class);
 Route::get('/admin/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
+Route::resource('agendas', AgendaController::class)->middleware('auth');
+Route::get('agendas', [AgendaController::class, 'index'])->name('agenda.index')->middleware('auth');
 
-
+Route::resource('products', ProductController::class)->middleware('auth');
+Route::get('products', [ProductController::class, 'index'])->name('product.index')->middleware('auth');
