@@ -1,15 +1,12 @@
 <?php
 
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Profile;
 use App\Http\Controllers\Homepage;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,13 +22,17 @@ use Illuminate\Support\Facades\Route;
 
 // Homepage Route
 Route::controller(Homepage::class)->group(function(){
-    Route::get('/','home');
-    Route::get('/profile/{params}','profile');
-    Route::get('/news','news');
-    Route::get('/news/{id}','newsdetail');
-    Route::get('/product','product');
-    Route::get('/product/{id}','productdetail');
-    Route::get('/payment/{id}','payment');
+    Route::get('/','home')->name('Beranda');
+    Route::get('/profile/{params}','profile')->name('Profil');
+    Route::name('Berita')->group(function(){
+        Route::get('/news','news');
+        Route::get('/news/{id}','newsdetail');
+    });
+    Route::name('product')->group(function(){
+        Route::get('/product','product');
+        Route::get('/product/{id}','productdetail');
+        Route::get('/payment/{id}','payment');
+    });
 });
 
 Route::prefix('admin')->group(function(){
@@ -55,6 +56,8 @@ Route::prefix('admin')->group(function(){
         });
     });
 });
+
+// Route::get('admin/news', [NewsController::class, 'upload'])->name('news.index');
 
 Route::get('api/payment/test', [PaymentsController::class, 'qrisTransferCharge']);
 

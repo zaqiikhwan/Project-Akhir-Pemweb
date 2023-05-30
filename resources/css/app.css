@@ -40,7 +40,7 @@
     /* =====================Admin====================== */
 
     .admin *{
-        @apply font-poppins
+        @apply font-jost
     }
 }
 
@@ -63,30 +63,56 @@
         @apply bg-gray-100 border-primary-500 rounded-md hover:shadow-lg
     }
 
+    .btn-danger{
+        @apply bg-red-500 text-white px-4 py-2 font-bold cursor-pointer rounded hover:shadow-lg
+    }
+
     /* =====================Admin====================== */
 
     .admin .sidebar{
-        @apply border-2 border-primary-500 rounded-lg p-1 w-full
+        @apply border-2 border-primary-500 rounded-md w-full
     }
     .admin .sidebar a{
-        @apply p-3 rounded-md text-sky-950 text-base font-medium mb-1 transition-all flex gap-2 items-center no-underline
+        @apply p-3 text-black text-base font-medium transition-all flex gap-2 items-center no-underline
     }
     .admin .sidebar a .iconify{
         @apply scale-125
     }
     .admin .sidebar a:hover{
-        @apply bg-primary-500 bg-opacity-50 text-white
+        @apply bg-primary-500 bg-opacity-25 text-gray-100
     }
     .admin .sidebar a.active{
-        @apply bg-primary-500 text-white
+        @apply bg-primary-500 text-white rounded-none
     }
 
     .payment-modal{
         @apply w-full h-screen bg-gray-500 z-30 fixed top-0 bg-opacity-50 backdrop-blur-sm items-center justify-center;
     }
     .payment-modal .modal-content{
-        animation: fadeIn 0.3s;
+        animation: fadeInFromBottom 0.3s;
     }
+
+    .pray-schedule{
+        @apply flex flex-col items-center bg-white text-primary-500 p-8 justify-center basis-1/5 rounded-md 
+    }
+
+    .fadeIn-animation{
+        animation: fadeInFromRight 0.3s;
+    }
+
+    .fadeInLeft-animation{
+        animation: fadeInFromLeft 0.8s;
+    }
+
+    .fadeInRight-animation{
+        animation: fadeInFromRight 0.8s;
+    }
+
+    .fadeInBottom-animation{
+        animation: fadeInFromBottom 0.8s;
+        animation-fill-mode: forwards;
+    }
+
 }
 
 @layer utilities{
@@ -96,7 +122,17 @@
       }
 }
 
-@keyframes fadeIn {
+@keyframes fadeInFromBottom {
   0% { opacity: 0; transform: translateY(30px);}
   100% { opacity: 1; transform: translateY(0px);}
 }
+
+@keyframes fadeInFromRight {
+  0% { opacity: 0; transform: translateX(250px);}
+  100% { opacity: 1; transform: translateX(0px);}
+}
+
+@keyframes fadeInFromLeft {
+    0% { opacity: 0; transform: translateX(-250px);}
+    100% { opacity: 1; transform: translateX(0px);}
+  }

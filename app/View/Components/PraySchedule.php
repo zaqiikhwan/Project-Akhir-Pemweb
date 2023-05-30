@@ -39,7 +39,7 @@ class PraySchedule extends Component
     public function render(): View|Closure|string
     {
 
-        $currentDate = Carbon::now();
+        $currentDate = Carbon::now()->timezone('Asia/Jakarta');
         $year = $currentDate->year;
         $month = $currentDate->month;
         $day = $currentDate->day;
