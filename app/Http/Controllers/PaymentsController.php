@@ -20,19 +20,19 @@ class PaymentsController extends Controller {
             "payment_type" => "gopay",
             "transaction_details" => [
                 "order_id" => Str::uuid()->toString(),
+
             ],
             "customer_details" => [
-                "email" => "budi.utomo@Midtrans.com",
-                "first_name" => "Azhar",
-                "last_name" => "Ogi",
-                "phone" => "+628948484848"
+                "address" => $req->input('alamat'),
+                "first_name" => $req->input('nama'),
+                "phone" => $req->input('telepon'),
             ],
             "item_details" => array(
                 [
                     "id" => 'order-id: ' . Str::random(15) . time(),
-                    "price" => 7000,
+                    "price" => $req->input('price'),
                     "quantity" => $req->input('quantity'),
-                    "name" => "Panci Miako"
+                    "name" => $req->input('name'),
                 ],
             ),
         );
