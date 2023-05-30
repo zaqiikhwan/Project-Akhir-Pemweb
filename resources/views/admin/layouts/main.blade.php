@@ -16,22 +16,22 @@
 <body class="admin">
     <div>
         <nav class="bg-primary-500">
-          <div class="container mx-auto flex justify-between py-4">
+          <div class="container mx-auto flex justify-between py-4 mb-8">
             <h1 class="text-white text-4xl font-semibold">Dashboard Admin</h1>
             <select 
               onchange="window.location.href = this.value;"
               value="none"
-              class="bg-primary-500 text-white font-semibold outline-none px-2 py-1 rounded-md shadow-sm hover:shadow-lg">
-              <option value="none" hidden>{{Auth::user()->email}}</option>
+              class="bg-primary-500 text-white font-semibold outline-none px-2 py-1 rounded-md shadow-sm hover:shadow-md">
+              <option value="none" hidden>{{Auth::user()->username}}</option>
               <option value="{{route('actionlogout')}}">
                 Log out
               </option>
             </select>
           </div>
         </nav>
-        <main class="flex container mx-auto mt-4 gap-4">
+        <main class="flex container mx-auto">
           <x-sidenav/>
-          <div class="basis-3/4">
+          <div class="basis-3/4 ml-8">
             @yield('content')
           </div>
         </main>

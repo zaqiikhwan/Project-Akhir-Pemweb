@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>News Admin</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <title>@yield('title')</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+	<title>Edit Berita</title>
+	{{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
 
 </head>
 
@@ -10,13 +16,9 @@
 
 @section('content')
 <body>
-	<div class="row">
-		<div class="container">
-
-			<h2 class="text-center my-5">CRUD News Page</h2>
-
+	<div class="container border-2 border-primary-500 p-4 rounded-md shadow-md">
+		<h1 class="text-center my-5 text-5xl font-semibold">Edit Berita</h1>
 			<div class="col-lg-8 mx-auto my-5">
-
 				@if(count($errors) > 0)
 				<div class="alert alert-danger">
 					@foreach ($errors->all() as $error)
@@ -24,57 +26,58 @@
 					@endforeach
 				</div>
 				@endif
-				<form action="/admin/news/update" method="POST" enctype="multipart/form-data">
+				<form action="/admin/news/update" method="POST" enctype="multipart/form-data" class="flex flex-col w-full gap-4">
 					{{ csrf_field() }}
                     @method('PATCH')
                     <input type="hidden" name="id" value="{{ $news->id }}">
-					<div class="form-group">
-						<strong>File Gambar</strong><br/>
-						<input type="file" name="file">
+					<div class="form-group flex gap-2">
+						<label class="font-semibold w-1/4">File Gambar:</label>
+						<input type="file" name="file" class="w-full p-2 shadow-md rounded-md border-2 border-primary-500">
 					</div>
-					<div class="form-group">
-						<strong>Judul</strong>
-						<textarea class="form-control" name="title">{{ $news->title }}</textarea>
+					<div class="form-group flex gap-2">
+						<label class="font-semibold w-1/4">Judul:</label>
+						<textarea class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" name="title" required>{{ $news->title }}</textarea>
 					</div>
-					<div class="form-group">
-						<strong>Konten</strong>
-						<textarea class="form-control" name="content">{{ $news->content }}</textarea>
+					<div class="form-group flex gap-2">
+						<label class="font-semibold w-1/4">Konten:</label>
+						<textarea class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" name="content">{{ $news->content }}</textarea>
 					</div>
-                    <div class="form-group">
-                        <strong>Tanggal</strong>
-                        <input type="date" name="date" class="form-control" placeholder="Date" value={{ $news->date }}>
+                    <div class="form-group flex gap-2">
+                        <label class="font-semibold w-1/4">Tanggal:</label>
+                        <input type="date" name="date" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Date" value={{ $news->date }} required>
                     </div>
 
-					<input type="submit" value="Update" class="btn btn-primary">
+					<input type="submit" value="Simpan" class="btn-primary flex self-end items-center justify-center w-1/6 mt-3">
 				</form>
 
-				<h4 class="my-5">Data</h4>
+				<h4 class="text-2xl font-semibold mt-8 mb-4">Data</h4>
 
-				<table class="table table-bordered table-striped">
+				<table class="table table-bordered table-striped border-2 border-primary-500 rounded-md w-full text-center">
 					<thead>
-						<tr>
-							<th width="1%">Gambar</th>
-							<th>Judul</th>
-                            <th>Konten</th>
-                            <th>Tanggal</th>
-							<th width="1%">Opsi</th>
+						<tr class="text-white bg-primary-500">
+							<th class="w-2/6 py-2">Gambar</th>
+							<th class="w-1/6">Judul</th>
+							<th class="w-1/6">Konten</th>
+							<th class="w-1/6">Tanggal</th>
+							<th class="w-2/6">Opsi</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><img width="150px" src="{{ url('/data_file/'.$news->image) }}"></td>
+							<td><img class="flex items-center justify-center p-3" src="{{ url('/data_file/'.$news->image) }}"></td>
 							<td>{{$news->title}}</td>
                             <td>{{$news->content}}</td>
                             <td>{{$news->date->format('y-m-H')}}</td>
 							<td>
-                                <a class="btn btn-danger" href="/admin/news/hapus/{{ $news->id }}">Hapus</a>
-                                <a class="btn btn-" href="/admin/news/edit/{{ $news->id }}">Edit</a>
+								<div class="flex flex-col justify-center items-center self-center h-full gap-2">
+								<a class="btn-primary w-2/3 flex items-center justify-center self-center gap-1" href="/admin/news/edit/{{ $news->id }}"><span class="iconify" data-icon="bx:edit"></span>Edit</a>
+                                <a class="btn-danger w-2/3 flex items-center justify-center self-center gap-1" href="/admin/news/hapus/{{ $news->id }}"><span class="iconify" data-icon="material-symbols:delete"></span>Hapus</a>
+								</div>
                             </td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-		</div>
 	</div>
 </body>
 @endsection
