@@ -40,7 +40,7 @@
     /* =====================Admin====================== */
 
     .admin *{
-        @apply font-poppins
+        @apply font-jost
     }
 }
 
