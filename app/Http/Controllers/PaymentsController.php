@@ -32,7 +32,7 @@ class PaymentsController extends Controller {
                     "id" => 'order-id: ' . Str::random(15) . time(),
                     "price" => $req->input('price'),
                     "quantity" => $req->input('quantity'),
-                    "name" => $req->input('name'),
+                    "name" => $req->input('product_name'),
                 ],
             ),
         );
