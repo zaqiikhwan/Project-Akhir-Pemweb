@@ -1,6 +1,6 @@
-@extends('product.layout')
+@extends('admin.layouts.main')
   
-@section('container')
+@section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb mt-5">
         <div class="pull-left">
