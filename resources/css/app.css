@@ -98,14 +98,17 @@
 
     .fadeIn-animation{
         animation: fadeInFromRight 0.3s;
+        animation-fill-mode: forwards;
     }
 
     .fadeInLeft-animation{
         animation: fadeInFromLeft 0.8s;
+        animation-fill-mode: forwards;
     }
 
     .fadeInRight-animation{
         animation: fadeInFromRight 0.8s;
+        animation-fill-mode: forwards;
     }
 
     .fadeInBottom-animation{
