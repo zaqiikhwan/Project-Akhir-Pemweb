@@ -22,13 +22,13 @@
 <table class="table table-bordered table-striped border-2 border-primary-500 rounded-md w-full text-center">
     <thead>
     <tr class="text-white bg-primary-500">
-        <th>No</th>
-        <th>Product Name</th>
-        <th>Image</th>
-        <th>Description</th>
-        <th>Stock</th>
-        <th>Price</th>
-        <th width="280px">Action</th>
+        <th >No</th>
+        <th >Produk</th>
+        <th class="w-1/6 py-2">Gambar</th>
+        <th >Deskripsi</th>
+        <th >Stok</th>
+        <th >Harga</th>
+        <th class="w-1/6">Opsi</th>
     </tr>
     @foreach ($products as $product)
     <tr>
@@ -37,7 +37,7 @@
         <td>{{ $product->product_name }}</td>
         <td>
             @foreach(explode('|', $product->images) as $image)
-            <img src="{{ asset('/foto_produk/'.$image) }}" width="100px" class="mt-3 mb-3">
+            <img src="{{ asset('/foto_produk/'.$image) }}" class="flex items-center justify-center p-3">
             @endforeach
         </td>
         <td>{{ $product->description }}</td>
@@ -45,15 +45,16 @@
         <td>{{ 'Rp ' . number_format($product->price, 2, ',', '.') }}</td>
         <td>
             <form action="{{ route('products.destroy',$product->id) }}" method="POST">
- 
-                <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
-  
-                <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
- 
-                @csrf
-                @method('DELETE')
+                <div class="flex flex-col my-2">
+                    <a class="btn-primary bg-blue-700 w-2/3 flex items-center justify-center self-center gap-1 m-1" href="{{ route('products.show',$product->id) }}"><span class="iconify" data-icon="material-symbols:present-to-all-rounded"></span>Lihat</a>
     
-                <button type="submit" class="btn btn-danger">Delete</button>
+                    <a class="btn-primary w-2/3 flex items-center justify-center self-center gap-1 m-1" href="{{ route('products.edit',$product->id) }}"><span class="iconify" data-icon="bx:edit"></span>Edit</a>
+    
+                    @csrf
+                    @method('DELETE')
+        
+                    <button type="submit" class="btn-danger w-2/3 flex items-center justify-center self-center gap-1 m-1"><span class="iconify" data-icon="material-symbols:delete"></span>Hapus</button>
+                </div>
             </form>
         </td>
     </tr>

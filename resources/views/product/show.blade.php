@@ -1,50 +1,54 @@
 @extends('admin.layouts.main')
   
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Product</h2>
+    <div class="container border-2 border-primary-500 p-4 rounded-md shadow-md">
+        <h1 class="text-center my-5 pb-3 text-5xl font-semibold">Lihat Produk</h1>
+            <div class="">
+                <a class="btn-primary flex self-end items-center justify-center w-1/6 mt-3 my-4" href="{{ route('product.index') }}">Kembali</a>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
      
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Product name:</strong>
-                {{ $product->product_name }}
+    <div class="flex flex-col">
+        <div class="py-4">
+            <div class="form-group flex gap-2">
+                <label class="font-semibold w-1/4">Produk:</label>
+                <div class="w-full p-2 shadow-md rounded-md border-2 border-primary-500">
+                    {{ $product->product_name }}
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image:</strong>
-                <br>
+        <div class="py-4">
+            <div class="form-group flex gap-2">
+                <label class="font-semibold w-1/4">Gambar Produk:</label>
                 @foreach(explode('|', $product->images) as $image)
-                    <img src="{{ asset('/foto_produk/'.$image) }}" width="100px" class="mt-3 mb-3">
+                    <img src="{{ asset('/foto_produk/'.$image) }}" class="w-full p-2 shadow-md rounded-md border-2 border-primary-500">
                 @endforeach
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Description:</strong>
-                {{$product->description }}
+        <div class="py-4">
+            <div class="form-group flex gap-2">
+                <label class="font-semibold w-1/4">Deskripsi Produk:</label>
+                <div class="w-full p-2 shadow-md rounded-md border-2 border-primary-500">
+                    {{$product->description }}
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Stock:</strong>
-                {{$product->product_stock }}
+        <div class="py-4">
+            <div class="form-group flex gap-2">
+                <label class="font-semibold w-1/4">Stok:</label>
+                <div class="w-full p-2 shadow-md rounded-md border-2 border-primary-500">
+                    {{$product->product_stock }}
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Price:</strong>
-                {{ 'Rp ' . number_format($product->price, 2, ',', '.') }}
+        <div class="py-4">
+            <div class="form-group flex gap-2">
+                <label class="font-semibold w-1/4">Harga Produk:</label>
+                <div class="w-full p-2 shadow-md rounded-md border-2 border-primary-500">
+                    {{ 'Rp ' . number_format($product->price, 2, ',', '.') }}
+                </div>
             </div>
         </div>
     </div>
+</div>
+
 @endsection

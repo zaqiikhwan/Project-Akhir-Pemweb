@@ -25,25 +25,25 @@
         <div class="py-4">
             <div class="form-group flex gap-2">
                 <label class="font-semibold w-1/4">Judul:</label>
-                <input type="text" name="title" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Title">
+                <input type="text" name="title" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Judul">
             </div>
         </div>
         <div class="py-4">
             <div class="form-group flex gap-2">
                 <label class="font-semibold w-1/4">File Gambar:</label>
-                <input type="file" name="images[]" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="image" multiple>
+                <input type="file" name="images[]" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Gambar" multiple>
             </div>
         </div>
         <div class="py-4">
             <div class="form-group flex gap-2">
                 <label class="font-semibold w-1/4">Konten:</label>
-                <input type="text" name="content" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Content">
+                <input type="text" name="content" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Konten">
             </div>
         </div>
         <div class="py-4">
             <div class="form-group flex gap-2">
                 <label class="font-semibold w-1/4">Tanggal:</label>
-                <input type="date" name="date" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Date">
+                <input type="date" name="date" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Tanggal">
             </div>
         </div>
         <div class="flex justify-end">
