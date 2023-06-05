@@ -16,7 +16,7 @@
 @section('content')
 <body>
 	<div class="container border-2 border-primary-500 p-4 rounded-md shadow-md">
-		<h1 class="text-center my-5 text-5xl font-semibold">Berita</h1>
+		<h1 class="text-center my-5 pb-3 text-5xl font-semibold">Berita</h1>
 		<div class="col-lg-8 mx-auto my-5">
 			@if(count($errors) > 0)
 			<div class="alert alert-danger">
@@ -52,9 +52,9 @@
 			<table class="table table-bordered table-striped border-2 border-primary-500 rounded-md w-full text-center">
 				<thead>
 					<tr class="text-white bg-primary-500">
-						<th class="w-2/6 py-2">Gambar</th>
+						<th class="w-1/6 py-2">Gambar</th>
 						<th class="w-1/6">Judul</th>
-						<th class="w-1/6">Konten</th>
+						<th class="w-2/6">Konten</th>
 						<th class="w-1/6">Tanggal</th>
 						<th class="w-2/6">Opsi</th>
 					</tr>
@@ -64,7 +64,7 @@
 					<tr>
 						<td><img class="flex items-center justify-center p-3" src="{{ url('/data_file/'.$g->image) }}"></td>
 						<td>{{$g->title}}</td>
-						<td>{{$g->content}}</td>
+						<td class="text-justify py-3">{{$g->content}}</td>
 						<td>{{$g->date->format('y-m-H')}}</td>
 						<td>
 							<div class="flex flex-col justify-center items-center self-center h-full gap-2">
