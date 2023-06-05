@@ -30,7 +30,7 @@ class NewsController extends Controller
 
         // isi dengan nama folder tempat kemana file diupload
         // untuk menghubungkan dengan local storage perlu menjalankan command
-        
+
         // php artisan storage:link
         // jika folder belum ada maka akan dicreate
 		$tujuan_upload = 'data_file';
@@ -86,6 +86,7 @@ class NewsController extends Controller
             ]);
         }
 
-        return redirect()->route('news.index');
+        $allNews = News::all();
+        return view('admin.news.news', ['news' => $allNews]);
     }
 }
