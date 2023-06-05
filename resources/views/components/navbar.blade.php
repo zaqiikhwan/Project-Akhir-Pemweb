@@ -10,7 +10,7 @@
             </li>
             @endforeach
             <li>
-                <a href="product" class="btn-primary @if($active == "product") shadow-lg @endif">Produk UMKM</a>
+                <a href="/product" class="btn-primary @if($active == "product") shadow-lg @endif">Produk UMKM</a>
             </li>
         </ul>
     </div>

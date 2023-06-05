@@ -54,6 +54,11 @@ Route::prefix('admin')->group(function(){
                 Route::get('/agenda', 'index')->name('agenda.index');
             });
         });
+
+        // Product Route
+        Route::name('product.')->group(function(){
+            Route::get('product', [ProductController::class, 'index'])->name('index')->middleware('auth');
+        });
     });
 });
 
@@ -72,4 +77,3 @@ Route::resource('agendas', AgendaController::class)->middleware('auth');
 Route::get('agendas', [AgendaController::class, 'index'])->name('agenda.index')->middleware('auth');
 
 Route::resource('products', ProductController::class)->middleware('auth');
-Route::get('products', [ProductController::class, 'index'])->name('product.index')->middleware('auth');

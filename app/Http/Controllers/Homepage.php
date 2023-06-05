@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\Product;
 
 class Homepage extends Controller
 {
@@ -37,12 +38,27 @@ class Homepage extends Controller
     }
 
     
-    public function product(){
-        return view('user.pages.product');
+    public function product(Request $request){
+        $key = $request->query("key");
+        $product = Product::where('product_name', 'LIKE','%'.$key.'%')->paginate(6);
+        $cur = $product->currentPage();
+        $max = $product->lastPage();
+
+        return view('user.pages.product', [
+            'product' => $product,
+            'cur' => $cur,
+            'max' => $max
+        ]);
     }
 
     public function productdetail($id){
-        return view('user.pages.product-detail');
+        $product = Product::find($id);
+        $other = Product::take(3)->get();
+
+        return view('user.pages.product-detail',[
+            'product' => $product,
+            'other' => $other
+        ]);
     }
 
     public function payment($id){

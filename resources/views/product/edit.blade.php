@@ -1,6 +1,6 @@
-@extends('product.layout')
+@extends('admin.layouts.main')
   
-@section('container')
+@section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -39,9 +39,20 @@
                     <strong>Image:</strong>
                     <input type="file" name="images[]" class="form-control" placeholder="Image" multiple>
                     <br>
-                    @foreach(explode('|', $product->images) as $image)
-                        <img src="{{ asset('/foto_produk/'.$image) }}" width="100px" class="mt-3 mb-3">
-                    @endforeach
+                    @if ($product->images)
+                        <div class="form-group">
+                            <label>Existing Images</label>
+                            <div class="existing-images">
+                                @foreach (explode('|', $product->images) as $image)
+                                    <div class="existing-image">
+                                        <img src="{{ asset('foto_produk/' . $image) }}" alt="Product Image" width="100px">
+                                        <button type="button" class="delete-image-btn" data-image="{{ $image }}" name="deleted_images">Delete</button>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    <input type="hidden" name="deleted_images" id="deleted_images">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -66,6 +77,27 @@
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-     
     </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var deleteButtons = document.querySelectorAll(".delete-image-btn");
+            var deletedImagesInput = document.querySelector("#deleted_images");
+            var form = document.querySelector("#edit-form");
+
+            deleteButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    var imageToDelete = this.dataset.image;
+                    var deletedImages = deletedImagesInput.value;
+    
+                    // Tambahkan gambar yang akan dihapus ke input deleted_images
+                    deletedImages += imageToDelete + "|";
+                    deletedImagesInput.value = deletedImages;
+    
+                    // Hapus elemen gambar dari tampilan
+                    this.parentNode.remove();
+                    form.submit();
+                });
+            });
+        });
+    </script>
 @endsection

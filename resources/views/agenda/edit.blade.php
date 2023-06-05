@@ -38,9 +38,20 @@
                 <div class="form-group">
                     <strong>Image:</strong>
                     <input type="file" name="images[]" class="form-control" placeholder="image" multiple>
-                    @foreach(explode('|', $agenda->images) as $image)
-                        <img src="{{ asset('/data_file/'.$image) }}" width="100px" class="mb-3 mt-3">
-                    @endforeach
+                    @if ($agenda->images)
+                        <div class="form-group">
+                            <label>Existing Images</label>
+                            <div class="existing-images">
+                                @foreach (explode('|', $agenda->images) as $image)
+                                    <div class="existing-image">
+                                        <img src="{{ asset('data_file/' . $image) }}" alt="Agenda Image" width="100px">
+                                        <button type="button" class="delete-image-btn" data-image="{{ $image }}" name="deleted_images">Delete</button>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    <input type="hidden" name="deleted_images" id="deleted_images">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -59,6 +70,27 @@
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-     
     </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var deleteButtons = document.querySelectorAll(".delete-image-btn");
+            var deletedImagesInput = document.querySelector("#deleted_images");
+            var form = document.querySelector("#edit-form");
+
+            deleteButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    var imageToDelete = this.dataset.image;
+                    var deletedImages = deletedImagesInput.value;
+    
+                    // Tambahkan gambar yang akan dihapus ke input deleted_images
+                    deletedImages += imageToDelete + "|";
+                    deletedImagesInput.value = deletedImages;
+    
+                    // Hapus elemen gambar dari tampilan
+                    this.parentNode.remove();
+                    form.submit();
+                });
+            });
+        });
+    </script>
 @endsection

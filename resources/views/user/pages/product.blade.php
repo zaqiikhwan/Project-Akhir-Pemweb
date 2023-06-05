@@ -17,19 +17,19 @@
         </form>
     </section>
     <section class="grid grid-cols-3 container mx-auto mb-8 gap-4">
-        @foreach (range(1,10) as $i)
-            <span class="bg-gray-100 rounded-md shadow-md hover:shadow-xl hover:bg-gray-200">
+        @foreach ($product as $i)
+            <a class="bg-gray-100 rounded-md shadow-md hover:shadow-xl hover:bg-gray-200" href="/product/{{$i->id}}">
                 <img
-                    src="https://placekitten.com/300/300"
+                    src="/foto_produk/{{explode("|", $i->images)[0]}}"
                     alt="imageprodcut"
                     class="w-full aspect-video object-cover rounded-t-md">
                 <div class="p-4">
-                    <h2 class="text-xl font-semibold">Lorem Ipsum Dolor</h2>
-                    <p class="mb-4">Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor</p>
-                    <span class="text-lg">Rp 00.000</span>
+                    <h2 class="text-xl font-semibold">{{$i->product_name}}</h2>
+                    <p class="mb-4">{{$i->description}}</p>
+                    <span class="text-lg">Rp {{number_format($i->price)}}</span>
                 </div>
-            </span>
+            </a>
         @endforeach
     </section>
-    <x-paginate :cur="1" :max="3"/>
+    <x-paginate :cur="$cur" :max="$max"/>
 @endsection
