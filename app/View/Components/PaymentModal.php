@@ -5,15 +5,18 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Product;
 
-class paymentmodal extends Component
+class PaymentModal extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $id;
+
+    public function __construct($id)
     {
-        //
+        $this->id = $id;
     }
 
     /**
@@ -21,6 +24,7 @@ class paymentmodal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.payment-modal');
+        $product = Product::find($this->id);
+        return view('components.payment-modal',['product'=>$product]);
     }
 }

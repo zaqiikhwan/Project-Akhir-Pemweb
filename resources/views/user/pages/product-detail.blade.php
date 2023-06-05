@@ -24,7 +24,13 @@
                 <p class="mb-6">{{$product->description}}</p>
                 <p>Jumlah Produk:</p>
                 <section class="flex gap-4">
-                    <input type="number" min="1" value="1" class="w-1/3 border-2 border-primary-500 rounded-md text-center font-bold" id="amount-input">
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        class="w-1/3 border-2 border-primary-500 rounded-md text-center font-bold"
+                        id="amount-input"
+                        onchange="setQuantity(event)">
                     <button class="btn-primary w-1/5" id="btn-buy" onclick="openModal()">Beli</button>
                 </section>
             </section>
@@ -45,7 +51,7 @@
         @foreach ($other as $i)
             <a class="bg-gray-100 rounded-md shadow-md hover:shadow-lg hover:border-2" href="/product/{{$i->id}}">
                 <img
-                    src="/foto_produk/{{$i->images}}"
+                    src="/foto_produk/{{explode("|", $i->images)[0]}}"
                     alt="imageprodcut"
                     class="w-full aspect-video object-cover">
                 <div class="p-4">
@@ -56,7 +62,7 @@
             </a>
         @endforeach
     </section>
-    <x-payment-modal/>
+    <x-payment-modal :id="$product->id"/>
     <script>
         let imgIndex = 0;
         let productData = @json($product);
