@@ -1,17 +1,12 @@
 @extends('admin.layouts.main')
   
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb mt-5">
-        <div class="pull-left">
-            <h2>Add New Agenda</h2>
+<div class="container border-2 border-primary-500 p-4 rounded-md shadow-md">
+    <h1 class="text-center my-5 pb-3 text-5xl font-semibold">Tambah Agenda</h1>
+        <div class="">
+            <a class="btn-primary flex self-end items-center justify-center w-1/6 mt-3 my-4" href="{{ route('agenda.index') }}">Kembali</a>
         </div>
-        <div class="pull-right mt-3 mb-3">
-            <a class="btn btn-primary" href="{{ route('agenda.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
-     
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -26,35 +21,36 @@
 <form action="{{ route('agenda.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     
-     <div class="row mb-3">
-        <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
-            <div class="form-group">
-                <strong>Title:</strong>
-                <input type="text" name="title" class="form-control" placeholder="Title">
+     <div class="flex flex-col">
+        <div class="py-4">
+            <div class="form-group flex gap-2">
+                <label class="font-semibold w-1/4">Judul:</label>
+                <input type="text" name="title" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Title">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
-            <div class="form-group">
-                <strong>Image:</strong>
-                <input type="file" name="images[]" class="form-control" placeholder="image" multiple>
+        <div class="py-4">
+            <div class="form-group flex gap-2">
+                <label class="font-semibold w-1/4">File Gambar:</label>
+                <input type="file" name="images[]" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="image" multiple>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
-            <div class="form-group">
-                <strong>Content:</strong>
-                <input type="text" name="content" class="form-control" placeholder="Content">
+        <div class="py-4">
+            <div class="form-group flex gap-2">
+                <label class="font-semibold w-1/4">Konten:</label>
+                <input type="text" name="content" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Content">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
-            <div class="form-group">
-                <strong>Date:</strong>
-                <input type="date" name="date" class="form-control" placeholder="Date">
+        <div class="py-4">
+            <div class="form-group flex gap-2">
+                <label class="font-semibold w-1/4">Tanggal:</label>
+                <input type="date" name="date" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" placeholder="Date">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
+        <div class="flex justify-end">
+            <button type="submit" class="btn-primary flex self-end items-center justify-center w-1/5 mt-3">Simpan</button>
+          </div>
     </div>
      
 </form>
+</div>
 @endsection

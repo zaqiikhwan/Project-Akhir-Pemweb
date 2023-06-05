@@ -1,16 +1,17 @@
 @extends('admin.layouts.main')
   
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Product</h2>
+<div class="container border-2 border-primary-500 p-4 rounded-md shadow-md">
+    <div class="flex flex-col">
+        <div class="">
+            <h1 class="text-center my-5 pb-3 text-5xl font-semibold">Produk</h1>
         </div>
-        <div class="pull-right mb-3">
-            <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
-        </div>
+        <div class="flex justify-end">
+            <a class="btn-primary flex self-end items-center justify-center w-1/5 mt-3" href="{{ route('products.create') }}">Tambah Produk</a>
+        </div> 
     </div>
-</div>
+
+    <h4 class="text-2xl font-semibold mt-8 mb-4">Data</h4>
 
 @if ($message = Session::get('success'))
     <div class="alert alert-success">
@@ -18,8 +19,9 @@
     </div>
 @endif
  
-<table class="table table-bordered">
-    <tr>
+<table class="table table-bordered table-striped border-2 border-primary-500 rounded-md w-full text-center">
+    <thead>
+    <tr class="text-white bg-primary-500">
         <th>No</th>
         <th>Product Name</th>
         <th>Image</th>
@@ -30,6 +32,7 @@
     </tr>
     @foreach ($products as $product)
     <tr>
+    </thead>
         <td>{{ ++$i }}</td>
         <td>{{ $product->product_name }}</td>
         <td>
@@ -58,4 +61,6 @@
 </table>
 
 {!! $products->links() !!}
+
+</div>
 @endsection
