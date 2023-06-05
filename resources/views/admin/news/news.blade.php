@@ -47,7 +47,7 @@
 				<input type="submit" value="Unggah" class="btn-primary flex self-end items-center justify-center w-1/6 mt-3">
 			</form>
 
-			<h4 class="text-2xl font-semibold mt-8 mb-4">Data</h4>
+			<h4 class="text-2xl font-semibold mt-8 mb-4">Daftar Berita</h4>
 
 			<table class="table table-bordered table-striped border-2 border-primary-500 rounded-md w-full text-center">
 				<thead>

@@ -11,7 +11,7 @@
         </div> 
     </div>
 
-    <h4 class="text-2xl font-semibold mt-8 mb-4">Data</h4>
+    <h4 class="text-2xl font-semibold mt-8 mb-4">Daftar Produk</h4>
 
 @if ($message = Session::get('success'))
     <div class="alert alert-success">
