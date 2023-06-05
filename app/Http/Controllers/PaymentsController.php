@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Midtrans\CoreApi;
 use Illuminate\Support\Str;
+use Illuminate\Contracts\View\View;
 
 class PaymentsController extends Controller {
     /**
@@ -23,14 +24,14 @@ class PaymentsController extends Controller {
 
             ],
             "customer_details" => [
-                "address" => $req->input('alamat'),
-                "first_name" => $req->input('nama'),
-                "phone" => $req->input('telepon'),
+                "address" => $req->input('address'),
+                "first_name" => $req->input('name'),
+                "phone" => $req->input('phone'),
             ],
             "item_details" => array(
                 [
                     "id" => 'order-id: ' . Str::random(15) . time(),
-                    "price" => $req->input('price'),
+                    "price" => $req->input('total'),
                     "quantity" => $req->input('quantity'),
                     "name" => $req->input('product_name'),
                 ],
@@ -40,7 +41,8 @@ class PaymentsController extends Controller {
         if (!$charge) {
             return ['code' => 0, 'message' => 'Terjadi kesalahan'];
         }
-            return ['code' => 1, 'message' => 'success', 'result' => $charge];
+            return view("user.pages.payment", ['data' => $charge, 'product'=>$req->all()]);
+            // return ['code' => 1, 'message' => 'success', 'result' => $charge];
         } catch (\Exception $e)
         {
             return ['code' => 0, 'message' => 'Terjadi kesalahan: '+ $e->getMessage()];
