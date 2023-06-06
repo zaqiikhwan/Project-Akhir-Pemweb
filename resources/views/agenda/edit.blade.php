@@ -34,7 +34,7 @@
                 <div class="form-group flex gap-2 w-full">
                     <label class="font-semibold w-1/4">File Gambar:</label>
                     <div class="flex w-full p-2 shadow-md rounded-md border-2 border-primary-500">
-                    <input type="file" name="images[]" class="flex flex-col" placeholder="image" multiple>
+                    <input type="file" name="images[]" class="flex flex-col" placeholder="image" max="5" multiple>
                     @if ($agenda->images)
                         <div class="form-group flex flex-col">
                             <label class="font-semibold">Gambar Sekarang</label>

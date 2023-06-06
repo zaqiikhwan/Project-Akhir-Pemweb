@@ -40,6 +40,7 @@ Route::prefix('admin')->group(function(){
         // News Route
         Route::name('news')->group(function(){
             Route::controller(NewsController::class)->group(function(){
+                // Route::get('/news', 'index')->name('news.index');
                 Route::get('/news', 'upload');
                 Route::post('/news', 'proses_upload');
                 Route::get('/news/hapus/{id}', 'delete');

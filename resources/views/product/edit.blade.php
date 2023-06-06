@@ -4,7 +4,7 @@
 <div class="container border-2 border-primary-500 p-4 rounded-md shadow-md">
     <h1 class="text-center my-5 pb-3 text-5xl font-semibold">Edit Produk</h1>
         <div class="">
-            <a class="btn-primary flex self-end items-center justify-center w-1/6 mt-3 my-4" href="{{ route('product.index') }}">Kembali</a>
+            <a class="btn-primary flex self-end items-center justify-center w-1/6 mt-3 my-4" href="{{ route('products.index') }}">Kembali</a>
         </div>
      
     @if ($errors->any())

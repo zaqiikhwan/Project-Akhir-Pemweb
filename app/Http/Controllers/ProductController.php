@@ -105,7 +105,7 @@ class ProductController extends Controller
         }
 
         $product->update($input);
-        return redirect()->route('product.index')->with('success', 'Produk berhasil diupdate');
+        return redirect()->route('products.index')->with('success', 'Produk berhasil diupdate');
     }
 
     //delete specified product

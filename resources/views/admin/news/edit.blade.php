@@ -18,6 +18,10 @@
 <body>
 	<div class="container border-2 border-primary-500 p-4 rounded-md shadow-md">
 		<h1 class="text-center my-5 pb-3 text-5xl font-semibold">Edit Berita</h1>
+		<div class="">
+			<a class="btn-primary flex self-end items-center justify-center w-1/6 mt-3 my-4" 
+			href="{{ url('/admin/news')}}">Kembali</a>
+		</div>
 			<div class="col-lg-8 mx-auto my-5">
 				@if(count($errors) > 0)
 				<div class="alert alert-danger">
@@ -49,34 +53,6 @@
 
 					<input type="submit" value="Simpan" class="btn-primary flex self-end items-center justify-center w-1/6 mt-3">
 				</form>
-
-				<h4 class="text-2xl font-semibold mt-8 mb-4">Data</h4>
-
-				<table class="table table-bordered table-striped border-2 border-primary-500 rounded-md w-full text-center">
-					<thead>
-						<tr class="text-white bg-primary-500">
-							<th class="w-1/6 py-2">Gambar</th>
-							<th class="w-1/6">Judul</th>
-							<th class="w-2/6">Konten</th>
-							<th class="w-1/6">Tanggal</th>
-							<th class="w-2/6">Opsi</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><img class="flex items-center justify-center p-3" src="{{ url('/data_file/'.$news->image) }}"></td>
-							<td>{{$news->title}}</td>
-                            <td class="text-justify py-3">{{$news->content}}</td>
-                            <td>{{$news->date->format('y-m-H')}}</td>
-							<td>
-								<div class="flex flex-col justify-center items-center self-center h-full gap-2">
-								<a class="btn-primary w-2/3 flex items-center justify-center self-center gap-1" href="/admin/news/edit/{{ $news->id }}"><span class="iconify" data-icon="bx:edit"></span>Edit</a>
-                                <a class="btn-danger w-2/3 flex items-center justify-center self-center gap-1" href="/admin/news/hapus/{{ $news->id }}"><span class="iconify" data-icon="material-symbols:delete"></span>Hapus</a>
-								</div>
-                            </td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
 	</div>
 </body>
