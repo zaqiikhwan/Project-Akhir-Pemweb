@@ -32,19 +32,21 @@
             <div class="py-4 flex">
                 <div class="form-group flex gap-2 w-full">
                     <label class="font-semibold w-1/4">File Gambar:</label>
-                    <div class="flex w-full p-2 shadow-md rounded-md border-2 border-primary-500">
-                    <input type="file" name="images[]" class="flex flex-col" placeholder="Gambar Produk" multiple>
+                    <div class="flex flex-col w-full p-2 shadow-md rounded-md border-2 border-primary-500">
+                    <div>
+                        <input type="file" name="images[]" class="flex flex-col" placeholder="Gambar Produk" multiple>
+                    </div>
                     @if ($product->images)
                         <div class="form-group flex flex-col">
                             <label class="font-semibold">Gambar Sekarang</label>
-                            {{-- <div class="existing-images"> --}}
+                            <div class="existing-images">
                                 @foreach (explode('|', $product->images) as $image)
-                                <img src="{{ asset('foto_produk/' . $image) }}" alt="Product Image"  class="flex items-center justify-center p-3">
-                                    <div class="flex items-end self-end justify-end w-1/3 p-3">
-                                        <button type="button" class="btn-danger w-2/3 flex items-center justify-center self-center gap-1" data-image="{{ $image }}" name="deleted_images">Hapus</button>
-                                    </div>
-                                @endforeach
-                            {{-- </div> --}}
+                                <div class="existing-image flex flex-col items-end self-end justify-end p-3">    
+                                    <img src="{{ asset('foto_produk/' . $image) }}" alt="Product Image"  class="flex items-center justify-center p-3 w-full">
+                                        <button type="button" class="btn-danger w-2/3 flex items-center justify-center self-center gap-1 delete-image-btn" data-image="{{ $image }}" name="deleted_images">Hapus</button>
+                                </div>
+                                    @endforeach
+                            </div>
                         </div>
                     @endif
                     <input type="hidden" name="deleted_images" id="deleted_images">
@@ -74,6 +76,7 @@
               </div>
         </div>
     </form>
+</div>
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -97,5 +100,4 @@
             });
         });
     </script>
-    </div>
 @endsection

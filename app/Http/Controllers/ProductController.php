@@ -45,7 +45,7 @@ class ProductController extends Controller
 
         $input['images'] = implode("|", $images);
         Product::create($input);
-        return redirect()->route('product.index')->with('success', 'Produk berhasil dibuat');
+        return redirect()->route('products.index')->with('success', 'Produk berhasil dibuat');
     }
 
     //display specified product
