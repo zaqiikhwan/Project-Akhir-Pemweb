@@ -2,28 +2,30 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Midtrans\CoreApi;
+use App\Http\Controllers\Midtrans\Notification;
 use Illuminate\Support\Str;
-use Illuminate\Contracts\View\View;
 
+// $notif = new \App\Http\Controllers\Midtrans\Notification();
+// $notif = $notif->getResponse();
+// $transaction = $notif->transaction_status;
+// $type = $notif->payment_type;
+// $order_id = $notif->order_id;
+// $fraud = $notif->fraud_status;
 class PaymentsController extends Controller {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
     public function qrisTransferCharge(Request $req) {
     try {
         $transaction = array(
             "payment_type" => "gopay",
             "transaction_details" => [
                 "order_id" => Str::uuid()->toString(),
-
             ],
             "customer_details" => [
+                "email"=> $req->input('email'),
                 "address" => $req->input('address'),
                 "first_name" => $req->input('name'),
                 "phone" => $req->input('phone'),
@@ -41,11 +43,11 @@ class PaymentsController extends Controller {
         if (!$charge) {
             return ['code' => 0, 'message' => 'Terjadi kesalahan'];
         }
-            return view("user.pages.payment", ['data' => $charge, 'product'=>$req->all()]);
-            // return ['code' => 1, 'message' => 'success', 'result' => $charge];
+            // return view("user.pages.payment", ['data' => $charge, 'product'=>$req->all()]);
+            return ['code' => 1, 'message' => 'success', 'result' => $charge];
         } catch (\Exception $e)
         {
-            return ['code' => 0, 'message' => 'Terjadi kesalahan: '+ $e->getMessage()];
+            return ['code' => 0, 'message' => 'Terjadi kesalahan: '. $e->getMessage()];
         }
     }
 }
