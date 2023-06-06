@@ -1,19 +1,21 @@
 <?php
 
 namespace App\Http\Controllers\Midtrans;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class Config extends Controller
 {
     public static $serverKey = "SB-Mid-server-vJKgddtzHmynHGsq2DPfx0Pe";
+    // public static $serverKey = "Mid-server-2BSI7GMPAC96NwLY2jLi4ILQ";
     // public static $serverKey = "Mid-server-6HjHBd8x56PNCbPjxKGwOmah";
     /**
      * Your merchant's client key
      *
      * @static
      */
-    public static $clientKey = "SB-Mid-client-59dPg6IasQIxv5ol";
+    // public static $clientKey = "MMid-client-gsJ9O1oFtTrkC2Ua";
     /**
      * True for production
      * false for sandbox mode
@@ -33,7 +35,7 @@ class Config extends Controller
      *
      * @static
      */
-    public static $isSanitized = false;
+    public static $isSanitized = true;
     /**
      * Default options for every request
      *
@@ -54,8 +56,8 @@ class Config extends Controller
     public static function getBaseUrl()
     {
         return Config::$isProduction ?
-        Config::PRODUCTION_BASE_URL :
-        Config::SANDBOX_BASE_URL;
+            Config::PRODUCTION_BASE_URL :
+            Config::SANDBOX_BASE_URL;
     }
 
     /**
@@ -66,6 +68,6 @@ class Config extends Controller
     public static function getSnapBaseUrl()
     {
         return Config::$isProduction ?
-        Config::SNAP_PRODUCTION_BASE_URL : Config::SNAP_SANDBOX_BASE_URL;
+            Config::SNAP_PRODUCTION_BASE_URL : Config::SNAP_SANDBOX_BASE_URL;
     }
 }

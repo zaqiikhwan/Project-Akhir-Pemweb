@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Midtrans;
-use Illuminate\Http\Request; 
 use App\Http\Controllers\Controller;
 
 class Transaction extends Controller
@@ -17,9 +16,9 @@ class Transaction extends Controller
 
     /**
      * Approve challenge transaction
-     * 
+     *
      * @param string $id Order ID or transaction ID
-     * 
+     *
      * @return string
      */
     public static function approve($id)
@@ -33,9 +32,9 @@ class Transaction extends Controller
 
     /**
      * Cancel transaction before it's settled
-     * 
+     *
      * @param string $id Order ID or transaction ID
-     * 
+     *
      * @return string
      */
     public static function cancel($id)
@@ -46,12 +45,12 @@ class Transaction extends Controller
             false
         )->status_code;
     }
-  
+
     /**
      * Expire transaction before it's setteled
-     * 
+     *
      * @param string $id Order ID or transaction ID
-     * 
+     *
      * @return mixed[]
      */
     public static function expire($id)
@@ -67,9 +66,9 @@ class Transaction extends Controller
      * Transaction status can be updated into refund
      * if the customer decides to cancel completed/settlement payment.
      * The same refund id cannot be reused again.
-     * 
+     *
      * @param string $id Order ID or transaction ID
-     * 
+     *
      * @return mixed[]
      */
     public static function refund($id)
@@ -84,9 +83,9 @@ class Transaction extends Controller
     /**
      * Deny method can be triggered to immediately deny card payment transaction
      * in which fraud_status is challenge.
-     * 
+     *
      * @param string $id Order ID or transaction ID
-     * 
+     *
      * @return mixed[]
      */
     public static function deny($id)
@@ -96,5 +95,5 @@ class Transaction extends Controller
             Config::$serverKey,
             false
         );
-    }  
+    }
 }
