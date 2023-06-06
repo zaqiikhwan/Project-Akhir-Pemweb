@@ -12,7 +12,7 @@
         <span class="iconify" data-icon="material-symbols:view-agenda"></span>
         Agenda
       </a>
-      <a href="/admin/products" class="@if ($route == "products.index" || $route == "products.create" || $route=="products.edit" || $route=="products.show") dd($route) active @endif">
+      <a href="/admin/products" class="@if ($route == "products.index" || $route == "products.create" || $route=="products.edit" || $route=="products.show") active @endif">
         <span class="iconify" data-icon="gridicons:product"></span>
         Produk
       </a>
