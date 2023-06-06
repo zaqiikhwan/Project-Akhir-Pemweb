@@ -7,6 +7,8 @@ use App\Http\Controllers\Homepage;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\Midtrans\Transaction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +68,8 @@ Route::prefix('admin')->group(function(){
 // Route::get('admin/news', [NewsController::class, 'upload'])->name('news.index');
 
 Route::get('api/payment/test', [PaymentsController::class, 'qrisTransferCharge'])->name("payqris");
+Route::post('payment/notification', [NotificationController::class, 'post']);
+Route::get('/status/{id}', [NotificationController::class, 'getStatus']);
 
 Route::get('/admin', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
