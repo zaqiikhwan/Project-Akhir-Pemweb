@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Midtrans\Transaction;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,10 +65,11 @@ Route::prefix('admin')->group(function(){
             Route::get('products', [ProductController::class, 'index'])->name('.index')->middleware('auth');
         });
 
-        Route::get('order',[Order::class , 'index'])->name('order');
+        Route::get('order',[OrderController::class , 'index'])->name('order');
     });
 });
 
+Route::get('orders', [OrderController::class, 'getOrders']);
 // Route::get('admin/news', [NewsController::class, 'upload'])->name('news.index');
 
 Route::get('api/payment/test', [PaymentsController::class, 'qrisTransferCharge'])->name("payqris");

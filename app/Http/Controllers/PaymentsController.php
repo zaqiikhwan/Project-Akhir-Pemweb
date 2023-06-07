@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Midtrans\CoreApi;
 use App\Http\Controllers\Midtrans\Notification;
+use App\Models\Order;
 use Illuminate\Support\Str;
 
 // $notif = new \App\Http\Controllers\Midtrans\Notification();
@@ -39,12 +40,21 @@ class PaymentsController extends Controller {
                 ],
             ),
         );
+
         $charge = CoreApi::charge($transaction);
         if (!$charge) {
             return ['code' => 0, 'message' => 'Terjadi kesalahan'];
         }
+        Order::create([
+            'id' => $transaction['transaction_details']['order_id'],
+            'quantity' => $transaction['item_details'][0]['quantity'],
+            'price' => $charge->gross_amount,
+            'qris_code' => $charge->actions[0]->url,
+            'status' => 'pending',
+            'product_id' => $req->input('product_id'),
+        ]);
             // return view("user.pages.payment", ['data' => $charge, 'product'=>$req->all()]);
-            return ['code' => 1, 'message' => 'success', 'result' => $charge];
+            return ['code' => 200, 'message' => 'success', 'result' => $charge];
         } catch (\Exception $e)
         {
             return ['code' => 0, 'message' => 'Terjadi kesalahan: '. $e->getMessage()];

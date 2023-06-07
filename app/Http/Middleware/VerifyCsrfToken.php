@@ -13,6 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'http://a689-103-108-23-13.ngrok-free.app/payment/notification',
+        'http://6d4b-175-45-191-253.ngrok-free.app/payment/notification',
     ];
 }
