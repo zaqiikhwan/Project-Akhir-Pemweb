@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Midtrans\Transaction;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,9 +63,19 @@ Route::prefix('admin')->group(function(){
         Route::name('products')->group(function(){
             Route::get('products', [ProductController::class, 'index'])->name('.index')->middleware('auth');
         });
+
+        // Order Route
+        // Route::name('orders')->group(function(){
+        //     Route::get('orders', [OrderController::class, 'getOrders'])->name('.index')->middleware('auth');
+        //     // Route::get('order/{id}', [Transaction::class, 'show'])->name('.show')->middleware('auth');
+        //     // Route::get('order/{id}/edit', [Transaction::class, 'edit'])->name('.edit')->middleware('auth');
+        //     // Route::patch('order/{id}', [Transaction::class, 'update'])->name('.update')->middleware('auth');
+        //     // Route::delete('order/{id}', [Transaction::class, 'destroy'])->name('.destroy')->middleware('auth');
+        // });
     });
 });
 
+Route::get('orders', [OrderController::class, 'getOrders']);
 // Route::get('admin/news', [NewsController::class, 'upload'])->name('news.index');
 
 Route::get('api/payment/test', [PaymentsController::class, 'qrisTransferCharge'])->name("payqris");
