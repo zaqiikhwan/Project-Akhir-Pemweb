@@ -33,7 +33,7 @@
             </section>
             <section class="basis-2/5 ml-8">
                 <img
-                    src="https://placekitten.com/500/500"
+                    src="/foto_produk/{{explode("|", $product->images)[0]}}"
                     alt="productimages"
                     class="w-full aspect-video object-cover mb-4 rounded-md">
                     <section class="text-white">
