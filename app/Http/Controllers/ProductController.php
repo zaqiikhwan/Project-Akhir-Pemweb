@@ -66,7 +66,7 @@ class ProductController extends Controller
 
         $input = $request->all();
         $existingImages = [];
-    
+
         // Hapus gambar lama yang akan dihapus dari database
         if ($request->has('deleted_images')) {
             $deletedImages = $request->input('deleted_images');
@@ -85,7 +85,7 @@ class ProductController extends Controller
             }
             $input['images'] = implode("|", $existingImages);
         }
-    
+
 
         if ($request->hasFile('images')) {
             $files = $request->file('images');
@@ -111,6 +111,6 @@ class ProductController extends Controller
     //delete specified product
     public function destroy(Product $product): RedirectResponse {
         $product->delete();
-        return redirect()->route('product.index')->with('success', 'Produk berhasil dihapus');
+        return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus');
     }
 }

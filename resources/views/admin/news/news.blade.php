@@ -33,7 +33,7 @@
 				</div>
 				<div class="form-group flex gap-2">
 					<label class="font-semibold w-1/4">Judul:</label>
-					<textarea class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" name="title" required></textarea>
+					<input type="text" class="form-control w-full p-2 shadow-md rounded-md border-2 border-primary-500" name="title" required></input>
 				</div>
 				<div class="form-group flex gap-2">
 					<label class="font-semibold w-1/4">Konten:</label>

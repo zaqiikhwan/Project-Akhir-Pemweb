@@ -7,9 +7,7 @@ use App\Http\Controllers\Controller;
 
 class Config extends Controller
 {
-    public static $serverKey = "SB-Mid-server-vJKgddtzHmynHGsq2DPfx0Pe";
-    // public static $serverKey = "Mid-server-2BSI7GMPAC96NwLY2jLi4ILQ";
-    // public static $serverKey = "Mid-server-6HjHBd8x56PNCbPjxKGwOmah";
+    public static $serverKey = "Mid-server"; // isi dengan server key midtrans
     /**
      * Your merchant's client key
      *
@@ -22,7 +20,7 @@ class Config extends Controller
      *
      * @static
      */
-    public static $isProduction = false;
+    public static $isProduction = true;
     /**
      * Set it true to enable 3D Secure by default
      *

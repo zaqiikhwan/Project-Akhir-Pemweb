@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Midtrans\CoreApi;
 use App\Http\Controllers\Midtrans\Notification;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Str;
 
 // $notif = new \App\Http\Controllers\Midtrans\Notification();
@@ -45,16 +46,19 @@ class PaymentsController extends Controller {
         if (!$charge) {
             return ['code' => 0, 'message' => 'Terjadi kesalahan'];
         }
+
+        $product_id = Product::where('product_name', $req->input('product_name'))->first()->id;
         Order::create([
             'id' => $transaction['transaction_details']['order_id'],
             'quantity' => $transaction['item_details'][0]['quantity'],
             'price' => $charge->gross_amount,
             'qris_code' => $charge->actions[0]->url,
             'status' => 'pending',
-            "product_name" => $req->input('product_name'),
-            "address" => $req->input('address'),
-            "first_name" => $req->input('name'),
-            "phone" => $req->input('phone'),
+            'product_id' => $product_id,
+            'product_name' => $req->input('product_name'),
+            'address' => $req->input('address'),
+            'first_name' => $req->input('name'),
+            'phone' => $req->input('phone'),
         ]);
             return view("user.pages.payment", ['data' => $charge, 'product'=>$req->all()]);
             // return ['code' => 200, 'message' => 'success', 'result' => $charge];
