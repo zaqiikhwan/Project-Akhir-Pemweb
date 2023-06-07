@@ -15,7 +15,10 @@ class Order extends Model
         'price',
         'qris_code',
         'status',
-        'product_id'
+        'product_name',
+        'address',
+        'first_name',
+        'phone',
     ];
 
     public function product()

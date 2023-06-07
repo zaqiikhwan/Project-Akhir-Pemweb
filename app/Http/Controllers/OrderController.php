@@ -15,4 +15,9 @@ class OrderController extends Controller
             return ['code' => 0, 'message' => 'Order tidak ditemukan'];
         return ['code' => 200, 'data' => $order];
     }
+
+    public function index(){
+        $order = Order::all();
+        return view("admin.order",["order"=>$order]);
+    }
 }

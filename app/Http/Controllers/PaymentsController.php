@@ -51,10 +51,13 @@ class PaymentsController extends Controller {
             'price' => $charge->gross_amount,
             'qris_code' => $charge->actions[0]->url,
             'status' => 'pending',
-            'product_id' => $req->input('product_id'),
+            "product_name" => $req->input('product_name'),
+            "address" => $req->input('address'),
+            "first_name" => $req->input('name'),
+            "phone" => $req->input('phone'),
         ]);
-            // return view("user.pages.payment", ['data' => $charge, 'product'=>$req->all()]);
-            return ['code' => 200, 'message' => 'success', 'result' => $charge];
+            return view("user.pages.payment", ['data' => $charge, 'product'=>$req->all()]);
+            // return ['code' => 200, 'message' => 'success', 'result' => $charge];
         } catch (\Exception $e)
         {
             return ['code' => 0, 'message' => 'Terjadi kesalahan: '. $e->getMessage()];

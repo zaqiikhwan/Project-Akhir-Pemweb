@@ -4,6 +4,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Homepage;
+use App\Http\Controllers\Order;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
@@ -64,14 +65,7 @@ Route::prefix('admin')->group(function(){
             Route::get('products', [ProductController::class, 'index'])->name('.index')->middleware('auth');
         });
 
-        // Order Route
-        // Route::name('orders')->group(function(){
-        //     Route::get('orders', [OrderController::class, 'getOrders'])->name('.index')->middleware('auth');
-        //     // Route::get('order/{id}', [Transaction::class, 'show'])->name('.show')->middleware('auth');
-        //     // Route::get('order/{id}/edit', [Transaction::class, 'edit'])->name('.edit')->middleware('auth');
-        //     // Route::patch('order/{id}', [Transaction::class, 'update'])->name('.update')->middleware('auth');
-        //     // Route::delete('order/{id}', [Transaction::class, 'destroy'])->name('.destroy')->middleware('auth');
-        // });
+        Route::get('order',[OrderController::class , 'index'])->name('order');
     });
 });
 

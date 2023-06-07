@@ -96,6 +96,28 @@
         @apply flex flex-col items-center bg-white text-primary-500 p-8 justify-center basis-1/5 rounded-md 
     }
 
+    #order-table {
+        @apply min-w-full
+    }
+    #order-table th{
+        @apply bg-primary-500 text-white
+    }
+    #order-table td, #order-table th{
+        @apply py-2 px-4 border-[1px]
+    }
+    #order-table tr:nth-child(odd){
+        @apply bg-green-50 cursor-default
+    }
+    #order-table tr:nth-child(odd):hover{
+        @apply bg-green-100
+    }
+    #order-table tr:nth-child(even){
+        @apply cursor-default
+    }
+    #order-table tr:nth-child(even):hover{
+        @apply bg-green-100
+    }
+
     .fadeIn-animation{
         animation: fadeInFromRight 0.3s;
         animation-fill-mode: forwards;

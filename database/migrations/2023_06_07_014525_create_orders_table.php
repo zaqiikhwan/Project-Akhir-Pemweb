@@ -19,6 +19,10 @@ return new class extends Migration
             $table->enum('status', ['pending', 'paid', 'failed', 'expired']);
             $table->string('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products');
+            $table->string('product_name');
+            $table->string('address');
+            $table->string('first_name');
+            $table->string('phone');
             $table->timestamps();
         });
     }
