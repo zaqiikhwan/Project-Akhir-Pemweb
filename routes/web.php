@@ -4,6 +4,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Homepage;
+use App\Http\Controllers\Order;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
@@ -62,6 +63,8 @@ Route::prefix('admin')->group(function(){
         Route::name('products')->group(function(){
             Route::get('products', [ProductController::class, 'index'])->name('.index')->middleware('auth');
         });
+
+        Route::get('order',[Order::class , 'index'])->name('order');
     });
 });
 
