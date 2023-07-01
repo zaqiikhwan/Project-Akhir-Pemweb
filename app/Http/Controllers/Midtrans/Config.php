@@ -20,7 +20,7 @@ class Config extends Controller
      *
      * @static
      */
-    public static $isProduction = true;
+    public static $isProduction = false;
     /**
      * Set it true to enable 3D Secure by default
      *

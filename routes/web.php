@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Midtrans\Transaction;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DikiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,3 +88,5 @@ Route::resource('agendas', AgendaController::class)->middleware('auth');
 Route::get('agendas', [AgendaController::class, 'index'])->name('agenda.index')->middleware('auth');
 
 Route::resource('products', ProductController::class)->middleware('auth');
+
+Route::get('/hash', [DikiController::class, 'hash']);
